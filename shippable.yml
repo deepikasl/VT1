@@ -15,5 +15,5 @@ build:
     - python --version
     - apt-get install cowsay
     - apt-get install python-pip
-    - echo "check this updated issue"
+    - echo "check this updatd issue"
 
