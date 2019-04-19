@@ -1,75 +1,33 @@
 resources:
-  - name: image_res-deepika
-    type: image
-    imageName: "library/nginx"
+  - name: sampleNode
+    type: gitRepo
+    repoPath: deepikasl/VT2
     configuration:
-      integrationName: dockerDeepika
+      integrationName: deepikaGithub
+      branches:
+        only: master
     initialVersion:
-      imageTag: latest
+      sha: master
 
 pipelines:
-  - name: pipe_1-deepika
+  - name: pipeline1
     setup:
-      environmentVariables:
-        readOnly:
-          - ENV1: value1
-          - ENV2: value2 
+      runtime: onHost
     steps:
-      - name: step1_A-deepika
+      - name: stepA
         type: bash
-        configuration:
-          affinityGroup: test_group 
-        setup:
-          environmentVariables:
-            normal:
-              - ENV1: value1
-              - ENV2: value2
-              - ENV3: value3
-              - ENV4: value4
-              - ENV5: value5
-            encrypted:
-              - SECURE_ENV1: test_value
-              - SECURE_ENV2: test_value
-          runtime:            
-            type: image
-            image:
-              auto: true
-              language: java
-              versions: v1.1
-            custom: 
-              name: test
-              tag:  test
-              options: test
-        requires:
+        triggeredBy:
           resources:
-            - image_res-deepika
+            - sampleNode 
         execution:
           onExecute:
-            - sleep 1m
-            - echo "executing..."
+            - echo "executing stepA..."
 
-      - name: step1_B-deepika
+      - name: stepB
         type: bash
-        configuration:
-          affinityGroup: test_group      
-        setup:
-          runtime: onHost
         triggeredBy:
           steps:
-            - step1_A-deepika
+            - stepA 
         execution:
           onExecute:
-            - echo "executing..."
-
-      - name: step1_C-deepika
-        type: bash
-        configuration:
-          affinityGroup: test_group      
-        setup:
-          runtime: onHost
-        triggeredBy:
-          steps:
-            - step1_A-deepika
-        execution:
-          onExecute:
-            - echo "executing..."
+            - echo "executing stepB..."
