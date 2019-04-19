@@ -1,19 +1,75 @@
-# Language setting
-language: python
+resources:
+  - name: image_res-deepika
+    type: image
+    imageName: "library/nginx"
+    configuration:
+      integrationName: dockerDeepika
+    initialVersion:
+      imageTag: latest
 
-#runtime:
- # nodePool: deepika-test-nodePool
- 
- 
-# Version number
-python:
-  - 2.7
+pipelines:
+  - name: pipe_1-deepika
+    setup:
+      environmentVariables:
+        readOnly:
+          - ENV1: value1
+          - ENV2: value2 
+    steps:
+      - name: step1_A-deepika
+        type: bash
+        configuration:
+          affinityGroup: test_group 
+        setup:
+          environmentVariables:
+            normal:
+              - ENV1: value1
+              - ENV2: value2
+              - ENV3: value3
+              - ENV4: value4
+              - ENV5: value5
+            encrypted:
+              - SECURE_ENV1: test_value
+              - SECURE_ENV2: test_value
+          runtime:            
+            type: image
+            image:
+              auto: true
+              language: java
+              versions: v1.1
+            custom: 
+              name: test
+              tag:  test
+              options: test
+        requires:
+          resources:
+            - image_res-deepika
+        execution:
+          onExecute:
+            - sleep 1m
+            - echo "executing..."
 
-build:
-  ci:
-    #- sleep 360
-    - python --version
-    - apt-get install cowsay
-    - apt-get install python-pip
-    - echo "check this updatd issue"
+      - name: step1_B-deepika
+        type: bash
+        configuration:
+          affinityGroup: test_group      
+        setup:
+          runtime: onHost
+        triggeredBy:
+          steps:
+            - step1_A-deepika
+        execution:
+          onExecute:
+            - echo "executing..."
 
+      - name: step1_C-deepika
+        type: bash
+        configuration:
+          affinityGroup: test_group      
+        setup:
+          runtime: onHost
+        triggeredBy:
+          steps:
+            - step1_A-deepika
+        execution:
+          onExecute:
+            - echo "executing..."
