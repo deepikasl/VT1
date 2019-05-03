@@ -8,6 +8,13 @@ resources:
         only: master
     initialVersion:
       sha: master
+  - name: sample_image_test
+    type: image
+    imageName: "library/nginx"
+    configuration:
+      integrationName: docker-int
+    initialVersion:
+      imageTag: latest
 
 pipelines:
   - name: pipeline1
