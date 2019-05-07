@@ -13,6 +13,7 @@ resources:
     imageName: "library/nginx"
     configuration:
       integrationName: dockerInt
+      isPull: true
     initialVersion:
       imageTag: latest
 
