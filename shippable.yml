@@ -26,6 +26,7 @@ pipelines:
         triggeredBy:
           resources:
             - sampleNode 
+            - sample_image_test
         execution:
           onExecute:
             - echo "executing stepA..."
