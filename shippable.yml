@@ -43,9 +43,9 @@ pipelines:
         execution:
           onExecute:
             - echo "executing stepB..."
-            - echo "apiKey is::" $int_artifactory_int_api_key
+            - echo "apiKey is::" $int_artifactory_int_apikey
             - echo "int url is" $int_artifactory_int_url
-            - jfrog rt config default-server --url $int_artifactory_int_url --apiKey $int_artifactory_int_api_key --interactive=false
+            - jfrog rt config default-server --url $int_artifactory_int_url --apiKey $int_artifactory_int_apikey --interactive=false
             - jfrog rt use default-server
             #- docker login -u $int_docker_registry_username -p $int_docker_registry_password $int_docker_registry_url
             - rt_ip=$(echo $int_artifactory_int_url | awk -F[/:] '{print $4}')
