@@ -52,7 +52,7 @@ pipelines:
             - rt_port=$(echo $int_artifactory_int_url | awk -F[/:] '{print $5}')
             - echo $rt_ip
             - echo $rt_port     
-            - docker pull $rt_ip:$rt_port/docker-virtual/busybox:latest
+            - docker pull $int_artifactory_int_url/docker-virtual/busybox:latest
             - ls $res_sample_node_resourcePath/gitRepo
             - pushd $res_sample_node_resourcePath/gitRepo
             - docker build -t $rt_ip:$rt_port/docker-virtual/alpine:$STEP_ID -f Dockerfile .
