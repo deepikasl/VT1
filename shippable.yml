@@ -34,6 +34,9 @@ pipelines:
 
       - name: stepB
         type: bash
+        requires:
+          integrations:
+            - artifactory_int
         triggeredBy:
           steps:
             - stepA 
