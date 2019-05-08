@@ -32,7 +32,7 @@ pipelines:
     steps:
       - name: stepA
         type: bash
-        triggeredBy:
+        requires:
           resources:
             - sampleNode 
             - sample_image_test
