@@ -24,6 +24,14 @@ resources:
       autoPull: true
     initialVersion:
       imageTag: latest
+  - name: sample_gcloud_test
+    type: file
+    fileLocation: https://console.cloud.google.com/storage/browser/testdeepika/identityRoles-deleteById-flowChart.xml
+    configuration:
+      integrationName: deepikaGoogleCloud
+      autoPull: true
+    initialVersion:
+      fileName: 'identityRoles-deleteById-flowChart'
 
 pipelines:
   - name: pipeline1
@@ -35,8 +43,7 @@ pipelines:
         requires:
           resources:
             - sampleNode 
-            - sample_image_test
-            - sample_artifactory_image_test
+            - sample_gcloud_test
         execution:
           onExecute:
             - echo "executing stepA..."
