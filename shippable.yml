@@ -24,14 +24,16 @@ resources:
       autoPull: true
     initialVersion:
       imageTag: latest
-  - name: sample_gcloud_test
-    type: file
-    fileLocation: https://console.cloud.google.com/storage/browser/testdeepika/identityRoles-deleteById-flowChart.xml
+  - name: sample_cluster_ssh_test
+    type: cluster
     configuration:
-      integrationName: deepikaGoogleCloud
-      autoPull: true
+      integrationName: deepikaSSH
     initialVersion:
-      fileName: 'identityRoles-deleteById-flowChart'
+      targetCount: 3
+      targetIP01: 1.2.3.4
+      targetIP02: 1.2.3.5
+      targetIP03: 1.2.3.6
+
 
 pipelines:
   - name: pipeline1
@@ -43,7 +45,7 @@ pipelines:
         requires:
           resources:
             - sampleNode 
-            - sample_gcloud_test
+            - sample_cluster_ssh_test
         execution:
           onExecute:
             - echo "executing stepA..."
