@@ -52,15 +52,19 @@ pipelines:
         type: bash
         requires:
           integrations:
-            - artifactory_int
+            - deepikaGoogleCloud
         triggeredBy:
           steps:
             - stepA 
         execution:
           onExecute:
             - echo "executing stepB..."
-            - echo "apiKey is::" $int_artifactory_int_apiKey
-            - echo "int url is" $int_artifactory_int_url
-            - jfrog rt config default-server --url $int_artifactory_int_url --apikey $int_artifactory_int_apiKey --interactive=false
-            - jfrog rt use default-server
+            - local jsonKey=$(eval echo "$"res_"$resourceName"_int_jsonKey)
+            - projectId="$( echo "$int_deepikaGoogleCloud_jsonKey" | jq -r '.project_id' )"
+            - touch key.json
+            - echo "$jsonKey" > key.json
+            - gcloud -q auth activate-service-account --key-file "key.json"
+            - gcloud config set project "$projectId"
+            - fileLocation='https://console.cloud.google.com/storage/browser/testdeepika/identityRoles-deleteById-flowChart.xml'
+            - gcloud compute scp --recurse $fileLocation $resourcePath
 
