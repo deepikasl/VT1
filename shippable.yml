@@ -54,17 +54,11 @@ pipelines:
         type: bash
         requires:
           integrations:
-            - deepikaGoogleCloud
+            - artifactory_int
         triggeredBy:
           steps:
             - stepA 
         execution:
           onExecute:
             - echo "executing stepB..."
-            - echo $int_deepikaGoogleCloud_jsonKey
-            - projectId="$( echo "$int_deepikaGoogleCloud_jsonKey" | jq -r '.project_id' )"
-            - touch key.json
-            - echo "$int_deepikaGoogleCloud_jsonKey" > key.json
-            - gcloud -q auth activate-service-account --key-file "key.json"
-            - gcloud config set project "$projectId"
 
