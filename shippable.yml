@@ -69,6 +69,6 @@ pipelines:
             - echo $rt_ip
             - echo $rt_port     
             - docker pull $rt_ip:$rt_port/docker-virtual/busybox:latest
-            - docker build -t $rt_ip:$rt_port/docker-virtual/deepikatest:$STEP_ID -f Dockerfile .
-            - docker push $rt_ip:$rt_port/docker-virtual/deepikaTest:$STEP_ID
+            - docker build -t $rt_ip:$rt_port/docker-virtual/alpine:$STEP_ID -f Dockerfile .
+            - docker push $rt_ip:$rt_port/docker-virtual/alpine:$STEP_ID
 
