@@ -62,7 +62,7 @@ pipelines:
             - echo $int_deepikaGoogleCloud_jsonKey
             - projectId="$( echo "$int_deepikaGoogleCloud_jsonKey" | jq -r '.project_id' )"
             - touch key.json
-            - echo "$jsonKey" > key.json
+            - echo "$int_deepikaGoogleCloud_jsonKey" > key.json
             - gcloud -q auth activate-service-account --key-file "key.json"
             - gcloud config set project "$projectId"
             - fileLocation='https://console.cloud.google.com/storage/browser/testdeepika/identityRoles-deleteById-flowChart.xml'
