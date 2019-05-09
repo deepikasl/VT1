@@ -59,7 +59,7 @@ pipelines:
         execution:
           onExecute:
             - echo "executing stepB..."
-            - local jsonKey=$(eval echo "$"res_"$resourceName"_int_jsonKey)
+            - echo $int_deepikaGoogleCloud_jsonKey
             - projectId="$( echo "$int_deepikaGoogleCloud_jsonKey" | jq -r '.project_id' )"
             - touch key.json
             - echo "$jsonKey" > key.json
