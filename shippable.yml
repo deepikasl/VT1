@@ -24,15 +24,15 @@ resources:
       autoPull: true
     initialVersion:
       imageTag: latest
-  - name: sample_cluster_ssh_test
-    type: cluster
-    configuration:
-      integrationName: deepikaSSH
-    initialVersion:
-      targetCount: 3
-      targetIP01: 1.2.3.4
-      targetIP02: 1.2.3.5
-      targetIP03: 1.2.3.6
+  #- name: sample_cluster_ssh_test
+   # type: cluster
+    #configuration:
+     # integrationName: deepikaSSH
+    #initialVersion:
+     # targetCount: 3
+      #targetIP01: 1.2.3.4
+      #targetIP02: 1.2.3.5
+      #targetIP03: 1.2.3.6
 
 
 pipelines:
@@ -45,7 +45,6 @@ pipelines:
         requires:
           resources:
             - sampleNode 
-            - sample_cluster_ssh_test
         execution:
           onExecute:
             - echo "executing stepA..."
