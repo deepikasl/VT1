@@ -56,7 +56,7 @@ pipelines:
             - coverage xml -o shippable/codecoverage/coverage.xml
             - echo "End of CI sec"
 
-      - name: stepB
+      - name: stepBB
         type: bash
         requires:
           integrations:
