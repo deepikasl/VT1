@@ -45,7 +45,6 @@ pipelines:
         requires:
           resources:
             - sampleNode
-            - sample_image_test
         execution:
           onExecute:
             - echo "executing stepA..."
@@ -57,7 +56,7 @@ pipelines:
             - coverage xml -o shippable/codecoverage/coverage.xml
             - echo "End of CI sec"
 
-      - name: stepB_edited
+      - name: stepB
         type: bash
         requires:
           integrations:
