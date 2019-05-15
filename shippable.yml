@@ -20,7 +20,7 @@ resources:
     type: image
     imageName: "docker-virtual/busybox"
     configuration:
-      integrationName: artifactory_int
+      integrationName: artifactory_int_1
       autoPull: true
     initialVersion:
       imageTag: latest
