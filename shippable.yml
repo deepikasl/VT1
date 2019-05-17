@@ -6,6 +6,8 @@ resources:
       integrationName: deepikaGithub
       branches:
         only: master
+      files:
+        only: '^\(.[a-z]*\)'
     initialVersion:
       sha: master
  
