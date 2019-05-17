@@ -8,33 +8,7 @@ resources:
         only: master
     initialVersion:
       sha: master
-  - name: sample_image_test
-    type: image
-    imageName: "library/nginx"
-    configuration:
-      integrationName: dockerInt
-      #autoPull: true
-    initialVersion:
-      imageTag: latest
-  - name: sample_artifactory_image_test
-    type: image
-    imageName: "docker-virtual/busybox"
-    configuration:
-      integrationName: artifactory_int_1
-      autoPull: true
-    initialVersion:
-      imageTag: latest
-  #- name: sample_cluster_ssh_test
-   # type: cluster
-    #configuration:
-     # integrationName: deepikaSSH
-    #initialVersion:
-     # targetCount: 3
-      #targetIP01: 1.2.3.4
-      #targetIP02: 1.2.3.5
-      #targetIP03: 1.2.3.6
-
-
+ 
 pipelines:
   - name: pipeline1
     setup:
@@ -56,27 +30,4 @@ pipelines:
             - coverage xml -o shippable/codecoverage/coverage.xml
             - echo "End of CI sec"
 
-      - name: stepB
-        type: bash
-        requires:
-          integrations:
-            - artifactory_int_1
-        triggeredBy:
-          testingField:
-            - test
-          steps:
-            - stepA 
-        execution:
-          onExecute:
-            - echo "executing test bash step..."
-            - jfrog rt config default-server --url $int_artifactory_int_url --apikey $int_artifactory_int_apiKey --interactive=false
-            - jfrog rt use default-server
-            #- docker login -u $int_docker_registry_username -p $int_docker_registry_password $int_docker_registry_url
-            - rt_ip=$(echo $int_artifactory_int_url | awk -F[/:] '{print $4}')
-            - rt_port=$(echo $int_artifactory_int_url | awk -F[/:] '{print $5}')
-            - echo $rt_ip
-            - echo $rt_port     
-            - docker pull $rt_ip:$rt_port/docker-virtual/busybox:latest
-            - docker build -t $rt_ip:$rt_port/docker-virtual/alpine:$STEP_ID -f Dockerfile .
-            - docker push $rt_ip:$rt_port/docker-virtual/alpine:$STEP_ID
 
