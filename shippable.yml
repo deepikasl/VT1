@@ -62,8 +62,8 @@ pipelines:
           integrations:
             - artifactory_int_1
         triggeredBy:
-         # testingField:
-          #  - test
+          testingField:
+            - test
           steps:
             - stepA 
         execution:
