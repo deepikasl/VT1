@@ -27,9 +27,9 @@ pipelines:
               ENV2: value2
             encrypted:
               myMiddleName: P0MA0FvspdmtybGshq
-        requires:
-          resources:
-            - sampleNode
+        #requires:
+         # resources:
+          #  - sampleNode
         execution:
           onExecute:
             - echo "executing stepA..."
