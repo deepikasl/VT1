@@ -21,8 +21,9 @@ pipelines:
         configuration:
           nodePool: node
         setup:
-          runtime:
-            type: image
+          environmentVariables:
+            normal:
+              ENV1: value1
         requires:
           resources:
             - sampleNode
