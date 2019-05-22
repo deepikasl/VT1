@@ -18,6 +18,9 @@ pipelines:
     steps:
       - name: stepA
         type: bash
+        setup:
+          runtime:
+            type: image
         requires:
           resources:
             - sampleNode
