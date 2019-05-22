@@ -12,7 +12,7 @@ resources:
       sha: master
  
 pipelines:
-  - name: pipeline1
+  - name: pipeline1db
     #setup:
      # runtime: onHost
     steps:
