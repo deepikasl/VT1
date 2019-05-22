@@ -13,8 +13,8 @@ resources:
  
 pipelines:
   - name: pipeline1
-    setup:
-      runtime: onHost
+    #setup:
+     # runtime: onHost
     steps:
       - name: stepA
         type: bash
