@@ -18,6 +18,8 @@ pipelines:
     steps:
       - name: stepA
         type: bash
+        configuration:
+          nodePool: node
         setup:
           runtime:
             type: image
