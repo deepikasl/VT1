@@ -39,6 +39,8 @@ pipelines:
         execution:
           onExecute:
             - echo "executing stepA..."
+            - pushd $res_app1_resourcePath
+            - docker build -t app1:$STEP_ID .
             - write_output myDockerImg "imageTag="$STEP_ID
         outputResources:
           - sampleImage
