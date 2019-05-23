@@ -25,9 +25,9 @@ pipelines:
             normal:
               ENV1: value1
               ENV2: value2
-        #requires:
-          #resources:
-            #- sampleNode
+        requires:
+          resources:
+            - sampleNode
         execution:
           onExecute:
             - echo "executing stepA..."
@@ -37,5 +37,21 @@ pipelines:
             - which python
             - coverage run `which nosetests` test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
             - coverage xml -o shippable/codecoverage/coverage.xml
+       
+      - name: stepB
+        type: bash
+        setup:
+          environmentVariables:
+            normal:
+              ENV3: value3
+              ENV4: value4
+        requires:
+          resources:
+            - sampleNode
+          steps:
+            - stepA
+        execution:
+          onExecute:
+            - echo "executing stepB..."
 
 
