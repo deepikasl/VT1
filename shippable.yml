@@ -26,8 +26,8 @@ pipelines:
     steps:
       - name: stepA
         type: bash
-        configuration:
-          nodePool: node
+        #configuration:
+         # nodePool: node
         setup:
           environmentVariables:
             normal:
