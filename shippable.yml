@@ -39,6 +39,7 @@ pipelines:
         execution:
           onExecute:
             - echo "executing stepA..."
+            - write_output myDockerImg "imageTag="$STEP_ID
         outputResources:
           - sampleImage
        
