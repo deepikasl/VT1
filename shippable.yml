@@ -25,8 +25,6 @@ pipelines:
             normal:
               ENV1: value1
               ENV2: value2
-            encrypted:
-              myMiddleName: P0MA0FvspdmtybGshq
         #requires:
           #resources:
             #- sampleNode
