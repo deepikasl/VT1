@@ -10,6 +10,14 @@ resources:
         only: '^\(.[a-z]*\)'
     initialVersion:
       sha: master
+  - name: sampleImage
+    type: image
+    imageName: library/nginx
+    configuration:
+      integrationName: deepikaDocker
+      autoPull: false
+    initialVersion:
+      imageTag: latest
  
 pipelines:
   - name: pipeline1db
@@ -31,12 +39,8 @@ pipelines:
         execution:
           onExecute:
             - echo "executing stepA..."
-            - pip install -r requirements.txt
-            - mkdir -p shippable/testresults
-            - mkdir -p shippable/codecoverage
-            - which python
-            - coverage run `which nosetests` test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
-            - coverage xml -o shippable/codecoverage/coverage.xml
+        outputResources:
+          - sampleImage
        
       - name: stepB
         type: bash
