@@ -36,7 +36,7 @@ resources:
   - name: clusterRes_jTest
     type: cluster
     configuration:
-      integrationName: deepikaDocker
+      integrationName: deepikaAws
       bastionHostIP: 1.2.3.4
     initialVersion:
       targetCount: 12
