@@ -1,5 +1,5 @@
 resources:
-  - name: sampleNode
+  - name: sampleNode_new
     type: gitRepo
     repoPath: deepikasl/VT2
     configuration:
@@ -10,53 +10,26 @@ resources:
         only: '^\(.[a-z]*\)'
     initialVersion:
       sha: master
-  - name: sampleImage
-    type: image
-    imageName: library/nginx
-    configuration:
-      integrationName: deepikaDocker
-      autoPull: false
-    initialVersion:
-      imageTag: latest
  
 pipelines:
   - name: pipeline1db
     setup:
       runtime: onHost
     steps:
-      - name: stepA
+      - name: stepAA
         type: bash
-        #configuration:
-         # nodePool: node
-        setup:
-          environmentVariables:
-            normal:
-              ENV1: value1
-              ENV2: value2
         requires:
           resources:
-            - sampleNode
+            - sampleNode_new
         execution:
           onExecute:
             - echo "executing stepA..."
-            - pushd $res_sampleNode_resourcePath
-            - write_output sampleImage "imageTag="$STEP_ID
-        outputResources:
-          - sampleImage
        
-      - name: stepB
+      - name: stepBB
         type: bash
-        setup:
-          environmentVariables:
-            normal:
-              ENV3: value3
-              ENV4: value4
         requires:
           resources:
-            - sampleNode
-        triggeredBy:
-          steps:
-            - stepA
+            - sampleNode_new
         execution:
           onExecute:
             - echo "executing stepB..."
