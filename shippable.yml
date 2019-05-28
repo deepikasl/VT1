@@ -51,9 +51,10 @@ pipelines:
             normal:
               ENV3: value3
               ENV4: value4
-        triggeredBy:
+        requires:
           resources:
             - sampleNode
+        triggeredBy:
           steps:
             - stepA
         execution:
