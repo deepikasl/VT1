@@ -18,7 +18,7 @@ pipelines:
     steps:
       - name: stepAA
         type: bash
-        triggeredBy:
+        requires:
           resources:
             - sampleNode_new
         execution:
@@ -27,7 +27,7 @@ pipelines:
        
       - name: stepBB
         type: bash
-        triggeredBy:
+        requires:
           resources:
             - sampleNode_new
         execution:
