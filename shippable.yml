@@ -10,7 +10,7 @@ resources:
         only: '^\(.[a-z]*\)'
     initialVersion:
       sha: master
-  - name: utility_repo1
+  - name: utility_repo
     type: gitRepo
     repoPath: deepikasl/sample-script
     configuration:
