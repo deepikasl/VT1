@@ -55,7 +55,7 @@ pipelines:
             - write_output sampleImage "imageTag="$STEP_ID
             - pushd $res_utility_repo_resourcePath
             - add_run_variable imageTag=$STEP_ID
-            - save_run_state test.sh deepika_file
+            - save_run_state echo.sh deepika_file
             #- restore_run_state my_file test.sh
         outputResources:
           - sampleImage
