@@ -41,6 +41,7 @@ pipelines:
             - echo "executing stepA..."
             - pushd $res_sampleNode_resourcePath
             - write_output sampleImage "imageTag="$STEP_ID
+            - add_run_variable imageTag=$STEP_ID            
         outputResources:
           - sampleImage
        
