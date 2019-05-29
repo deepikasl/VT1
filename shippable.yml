@@ -45,6 +45,9 @@ pipelines:
         requires:
           resources:
             - sampleNode
+        triggeredBy:
+          resources:
+            - utility_repo
         execution:
           onExecute:
             - echo "executing stepA..."
