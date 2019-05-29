@@ -3,7 +3,7 @@ resources:
     type: file
     configuration:
       integrationName: deepika_artifactory
-    initialVersion:
+    version:
       fileLocation: " example-repo-local"
       fileName: "archive.zip"
    
@@ -11,7 +11,7 @@ resources:
     type: file
     configuration:
       integrationName: deepika_artifactory
-    initialVersion:
+    version:
       pattern: "demo/app/"
       flat: false
       recursive: true
