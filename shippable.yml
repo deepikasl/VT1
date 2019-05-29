@@ -51,7 +51,7 @@ pipelines:
         execution:
           onExecute:
             - echo "executing stepA..."
-            - pushd $res_sampleNode_resourcePath
+            #- pushd $res_sampleNode_resourcePath
             - write_output sampleImage "imageTag="$STEP_ID
             - pushd $res_utility_repo_resourcePath
             - add_run_variable imageTag=$STEP_ID
