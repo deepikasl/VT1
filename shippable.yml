@@ -10,6 +10,15 @@ resources:
         only: '^\(.[a-z]*\)'
     version:
       sha: master
+  - name: utility_repo
+    type: gitRepo
+    repoPath: deepikasl/sample-script
+    configuration:
+      integrationName: deepikaGithub
+      branches:
+        only: test
+    initialVersion:
+      sha: test
  
 pipelines:
   - name: pipeline2db
