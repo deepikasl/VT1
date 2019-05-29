@@ -1,46 +1,38 @@
 resources:
-  - name: sampleNode_new
-    type: gitRepo
-    repoPath: deepikasl/VT2
+  - name: file_res_1
+    type: file
     configuration:
-      integrationName: deepikaGithub
-      branches:
-        only: master
-      files:
-        only: '^\(.[a-z]*\)'
-    version:
-      sha: master
-  - name: utility_repo1
-    type: gitRepo
-    repoPath: deepikasl/sample-script
+      integrationName: deepika_artifactory
+    initialVersion:
+      fileLocation: " example-repo-local"
+      fileName: "archive.zip"
+   
+  - name: file_res_2
+    type: file
     configuration:
-      integrationName: deepikaGithub
-      branches:
-        only: test
-    version:
-      sha: test
- 
+      integrationName: deepika_artifactory
+    initialVersion:
+      pattern: "demo/app/"
+      flat: false
+      recursive: true
+      target: "ankul_local_repo/"
+      limit: 5
+      offset: 5
+      
 pipelines:
-  - name: pipeline2db
-    setup:
-      runtime: onHost
+  - name: deepika_pipeline
     steps:
-      - name: stepAA
+      - name: step_1
         type: bash
-        requires:
+        triggeredBy:
           resources:
-            - sampleNode_new
+            - file_res_1
+            - file_res_2
         execution:
           onExecute:
-            - echo "executing stepA..."
-       
-      - name: stepBB
-        type: bash
-        requires:
-          resources:
-            - sampleNode_new
-        execution:
-          onExecute:
-            - echo "executing stepB..."
-
-
+            - printenv
+            - sudo apt-get install tree
+            - tree $res_file_res_1_resourcePath
+            - tree $res_file_res_2_resourcePath
+            - cat $STEP_TMP_DIR/fileSpecs.json
+            - echo change_1
