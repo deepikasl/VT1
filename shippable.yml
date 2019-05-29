@@ -10,6 +10,15 @@ resources:
         only: '^\(.[a-z]*\)'
     initialVersion:
       sha: master
+  - name: utility_repo
+    type: gitRepo
+    repoPath: deepikasl/sample-script
+    configuration:
+      integrationName: deepikaGithub
+      branches:
+        only: test
+    version:
+      sha: test
   - name: sampleImage
     type: image
     imageName: library/nginx
@@ -41,8 +50,10 @@ pipelines:
             - echo "executing stepA..."
             - pushd $res_sampleNode_resourcePath
             - write_output sampleImage "imageTag="$STEP_ID
+            - pushd $res_utility_repo_resourcePath
             - add_run_variable imageTag=$STEP_ID
             - save_run_state test.sh deepika_file
+            #- restore_run_state my_file test.sh
         outputResources:
           - sampleImage
        
