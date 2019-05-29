@@ -17,7 +17,7 @@ resources:
       integrationName: deepikaGithub
       branches:
         only: test
-    version:
+    initialVersion:
       sha: test
   - name: sampleImage
     type: image
