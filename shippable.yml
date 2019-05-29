@@ -8,9 +8,9 @@ resources:
         only: master
       files:
         only: '^\(.[a-z]*\)'
-    version:
+    initialVersion:
       sha: master
-  - name: utility_repo
+  - name: utility_repo1
     type: gitRepo
     repoPath: deepikasl/sample-script
     configuration:
