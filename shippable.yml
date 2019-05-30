@@ -45,5 +45,5 @@ pipelines:
             - sudo apt-get install tree
             - tree $res_file_res_1_resourcePath
             - tree $res_file_res_2_resourcePath
-            - cat $STEP_TMP_DIR/fileSpecs.json
+            #- cat $STEP_TMP_DIR/fileSpecs.json
             - echo change_1
