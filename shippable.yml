@@ -15,7 +15,13 @@ pipelines:
   - name: deepika_pipeline_inconsistent
     steps:
       - name: step_1_inconsistent
-        type: bashe
+        type: bash
+        configuration:
+          affinityGroup: deepika@#$%^&*
+#           priority: 
+#           timeoutSeconds: <job timeout limit>
+          nodePool: test
+          #chronological: true        
         triggeredBy:
           resources:
             #- file_res_1
