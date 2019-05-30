@@ -1,7 +1,7 @@
 resources:
   - name: sampleRepo_inconsistent
     type: gitRepo
-    repoPath: deepikasl/inconsistent
+    repoPath: deepikasl/VT1
     configuration:
       integrationName: deepikaGithub
       #branches:
