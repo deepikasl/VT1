@@ -18,6 +18,17 @@ resources:
       target: "ankul_local_repo/"
       limit: 5
       offset: 5
+  - name: sampleRepo
+    type: gitRepo
+    repoPath: deepikasl/VT1
+    configuration:
+      integrationName: deepikaGithub
+      #branches:
+       # only: master
+      #files:
+       # only: '^\(.[a-z]*\)'
+    version:
+      sha: master
       
 pipelines:
   - name: deepika_pipeline
@@ -26,8 +37,8 @@ pipelines:
         type: bash
         triggeredBy:
           resources:
-            - file_res_1
-            - file_res_2
+            #- file_res_1
+            - sampleRepo
         execution:
           onExecute:
             - printenv
