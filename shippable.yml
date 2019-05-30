@@ -8,7 +8,7 @@ resources:
         only: master
       files:
         only: '^\(.[a-z]*\)'
-    initialVersion:
+    version:
       sha: master
   - name: utility_repo
     type: gitRepo
@@ -17,7 +17,7 @@ resources:
       integrationName: deepikaGithub
       branches:
         only: test
-    initialVersion:
+    version:
       sha: test
   - name: sampleImage
     type: image
@@ -25,7 +25,7 @@ resources:
     configuration:
       integrationName: deepikaDocker
       autoPull: false
-    initialVersion:
+    version:
       imageTag: latest
  
 pipelines:
