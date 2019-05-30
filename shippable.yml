@@ -1,7 +1,7 @@
 resources:
   - name: sampleRepo_inconsistent
     type: gitRepo
-    repoPath: deepikasl/VT1
+    repoPath: deepikasl/VT2
     configuration:
       integrationName: deepikaGithub
       #branches:
@@ -15,7 +15,7 @@ pipelines:
   - name: deepika_pipeline_inconsistent
     steps:
       - name: step_1_inconsistent
-        type: bashe
+        type: bash
         triggeredBy:
           resources:
             #- file_res_1
