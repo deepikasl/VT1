@@ -38,7 +38,7 @@ pipelines:
         triggeredBy:
           resources:
             #- file_res_1
-            - sampleRepo
+            - sampleRepo1
         execution:
           onExecute:
             - printenv
