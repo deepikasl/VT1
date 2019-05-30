@@ -1,5 +1,5 @@
 resources:
-  - name: sampleRepo-inconsistent
+  - name: sampleRepo_inconsistent
     type: gitRepo
     repoPath: deepikasl/VT2
     configuration:
