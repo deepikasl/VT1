@@ -15,7 +15,7 @@ pipelines:
   - name: deepika_pipeline_inconsistent
     steps:
       - name: step_1_inconsistent
-        type: bash
+        type: bashe
         triggeredBy:
           resources:
             #- file_res_1
