@@ -1,24 +1,5 @@
 resources:
-  - name: file_res_1
-    type: file
-    configuration:
-      integrationName: deepika_artifactory
-    version:
-      fileLocation: " example-repo-local"
-      fileName: "archive.zip"
-   
-  - name: file_res_2
-    type: file
-    configuration:
-      integrationName: deepika_artifactory
-    version:
-      pattern: "demo/app/"
-      flat: false
-      recursive: true
-      target: "ankul_local_repo/"
-      limit: 5
-      offset: 5
-  - name: sampleRepo
+  - name: sampleRepo_inconsistent
     type: gitRepo
     repoPath: deepikasl/VT1
     configuration:
@@ -31,9 +12,9 @@ resources:
       sha: master
       
 pipelines:
-  - name: deepika_pipeline
+  - name: deepika_pipeline_inconsistent
     steps:
-      - name: step_1
+      - name: step_1_inconsistent
         type: bash
         triggeredBy:
           resources:
