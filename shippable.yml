@@ -17,7 +17,7 @@ pipelines:
       - name: step_1_inconsistent
         type: bash
         configuration:
-          affinityGroup: deepika@#$%^&*
+          affinityGroup: -deepika@#$%^&*
 #           priority: 
 #           timeoutSeconds: <job timeout limit>
           nodePool: test
