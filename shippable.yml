@@ -1,5 +1,5 @@
 resources:
-  - name: sampleNode
+  - name: sampleNode_native
     type: gitRepo
     repoPath: deepikasl/VT2
     configuration:
@@ -10,72 +10,89 @@ resources:
         only: '^\(.[a-z]*\)'
     version:
       sha: master
-  - name: utility_repo
-    type: gitRepo
-    repoPath: deepikasl/sample-script
+  - name: file_ap
+    type: file
     configuration:
-      integrationName: deepikaGithub
-      branches:
-        only: test
+      integrationName: deepika_artifactory
     version:
-      sha: test
-  - name: sampleImage
-    type: image
-    imageName: library/nginx
-    configuration:
-      integrationName: deepikaDocker
-      autoPull: false
+      pattern: "example-repo-local/"
+
+  - name: buildInfo_ap
+    type: buildInfo
     version:
-      imageTag: latest
+      buildName: $PIPELINE_NAME
+      buildNumber: 1 # will be updated to $RUN_NUMBER after we have OUT in publish_ap step
+     # targetRepo: test
+      
+  - name: promoteInfo_ap
+    type: buildInfo
+    version:
+      buildName: promote_bldinfo
+      buildNumber: 1  
  
 pipelines:
-  - name: pipeline1db
-    setup:
-      runtime: onHost
-    steps:
-      - name: stepA
+  - name: deepika_pipeline_native
+    steps:  
+      - name: bash_ap
         type: bash
-        #configuration:
-         # nodePool: node
-        setup:
-          environmentVariables:
-            normal:
-              ENV1: value1
-              ENV2: value2
-        requires:
-          resources:
-            - sampleNode
-        triggeredBy:
-          resources:
-            - utility_repo
         execution:
           onExecute:
-            - echo "executing stepA..."
-            #- pushd $res_sampleNode_resourcePath
-            - write_output sampleImage "imageTag="$STEP_ID
-            - pushd $res_utility_repo_resourcePath
-            - add_run_variable imageTag=$STEP_ID
-            - save_run_state echo.sh deepika_file
-            #- restore_run_state my_file test.sh
-        outputResources:
-          - sampleImage
-       
-      - name: stepB
-        type: bash
+            - echo "tesfftyt"
+            - printenv
+
+      - name: build_ap
+        type: build
+        payloadType: docker
         setup:
-          environmentVariables:
-            normal:
-              ENV3: value3
-              ENV4: value4
-        requires:
+          build:
+            dockerFileLocation: .
+            dockerFileName: Dockerfile
+            imageName: 34.66.110.173:8081/docker-local/ankul
+            imageTag: $PIPELINE_NAME.$RUN_NUMBER
+        triggeredBy:
           resources:
-            - sampleNode
+            - sampleScript_ap
+          steps:
+            - bash_ap
+        requires:
+          integrations:
+            - deepika_artifactory
+          resources:
+            - file_ap
+
+      - name: push_ap
+        type: push
+        setup:
+          push:
+            targetRepo: docker-local
+        requires:
+          integrations:
+            - deepika_artifactory
         triggeredBy:
           steps:
-            - stepA
-        execution:
-          onExecute:
-            - echo "executing stepB..."
-            - echo "hi"
-
-
+            - build_ap
+            
+      - name: publish_ap
+        type: publish
+        requires:
+          integrations:
+            - deepika_artifactory
+        triggeredBy:
+          steps:
+            - push_ap
+        outputResources:
+          - buildInfo_ap
+      
+      - name: promote_ap
+        type: promote
+        setup:
+          promote:
+            targetRepo: varsha_local_repo    
+        requires:
+          integrations:
+            - deepika_artifactory         
+        triggeredBy:
+          resources:
+            - buildInfo_ap
+        outputResources:
+          - promoteInfo_ap 
