@@ -51,7 +51,7 @@ pipelines:
             imageTag: $PIPELINE_NAME.$RUN_NUMBER
         triggeredBy:
           resources:
-            - sampleScript_ap
+            - sampleNode_native
           steps:
             - bash_ap
         requires:
