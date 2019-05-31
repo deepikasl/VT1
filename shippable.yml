@@ -32,6 +32,10 @@ pipelines:
   - name: pipeline1db
     setup:
       runtime: onHost
+      environmentVariables:
+        readOnly:
+          ENV1_pip: value1
+          ENV2_pip: value2  
     steps:
       - name: stepA
         type: bash
