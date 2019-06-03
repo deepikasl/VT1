@@ -1,5 +1,5 @@
 resources:
-  - name: sampleNode
+  - name: sampleNode_cyclic
     type: gitRepo
     repoPath: deepikasl/VT2
     configuration:
@@ -10,26 +10,9 @@ resources:
         only: '^\(.[a-z]*\)'
     version:
       sha: master
-  - name: utility_repo
-    type: gitRepo
-    repoPath: deepikasl/sample-script
-    configuration:
-      integrationName: deepikaGithub
-      branches:
-        only: test
-    version:
-      sha: test
-  - name: sampleImage
-    type: image
-    imageName: library/nginx
-    configuration:
-      integrationName: deepikaDocker
-      autoPull: false
-    version:
-      imageTag: latest
  
 pipelines:
-  - name: pipeline1db
+  - name: pipeline1db_cyclic
     setup:
       runtime: onHost
       environmentVariables:
@@ -39,8 +22,6 @@ pipelines:
     steps:
       - name: stepA
         type: bash
-        #configuration:
-         # nodePool: node
         setup:
           environmentVariables:
             normal:
@@ -48,38 +29,11 @@ pipelines:
               ENV2: value2
         requires:
           resources:
-            - sampleNode
-        triggeredBy:
-          resources:
-            - utility_repo
+            - sampleNode_cyclic
         execution:
           onExecute:
             - echo "executing stepA..."
-            #- pushd $res_sampleNode_resourcePath
-            - write_output sampleImage "imageTag="$STEP_ID
-            - pushd $res_utility_repo_resourcePath
-            - add_run_variable imageTag=$STEP_ID
-            - save_run_state echo.sh deepika_file
-            #- restore_run_state my_file test.sh
         outputResources:
-          - sampleImage
-       
-      - name: stepB
-        type: bash
-        setup:
-          environmentVariables:
-            normal:
-              ENV3: value3
-              ENV4: value4
-        requires:
-          resources:
-            - sampleNode
-        triggeredBy:
-          steps:
-            - stepA
-        execution:
-          onExecute:
-            - echo "executing stepB..."
-            - echo "hi"
+          - sampleNode_cyclic
 
 
