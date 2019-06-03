@@ -33,7 +33,7 @@ pipelines:
         execution:
           onExecute:
             - echo "executing stepA..."
-        outputResources:
-          - sampleNode_cyclic
+        #outputResources:
+         # - sampleNode_cyclic
 
 
