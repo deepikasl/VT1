@@ -85,5 +85,28 @@ pipelines:
           onExecute:
             - echo "executing stepB..."
             - echo "hi"
+  - name: pipeline2b
+    setup:
+      runtime: onHost
+      environmentVariables:
+        readOnly:
+          ENV1_pip2: value1
+          ENV2_pip2: value2  
+    steps:
+      - name: stepC
+        type: bash
+        triggeredBy:
+          resources:
+            - sampleImage
+        execution:
+          onExecute:
+            - echo "executing stepC..."
+            - echo $step_triggered_by_step_name, $step_triggered_by_resource_name, $step_triggered_by_identity_name, $step_image_name, $step_image_tag, $step_runtime, $step_runtime_version, $step_platform, $step_node_id, $step_node_name, $step_node_pool_name, $step_affinity_group
+            #- pushd $res_sampleNode_resourcePath
+            - write_output sampleImage "imageTag="$STEP_ID
+            - pushd $res_utility_repo_resourcePath
+            - add_run_variable imageTag=$STEP_ID
+            - save_run_state echo.sh deepika_file
+            #- restore_run_state my_file test.sh
 
 
