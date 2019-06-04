@@ -39,6 +39,9 @@ pipelines:
     steps:
       - name: stepA
         type: bash
+        configuration:
+          affinityGroup: build
+          nodePool: myNodePool
         #configuration:
          # nodePool: node
         setup:
