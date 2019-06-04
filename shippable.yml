@@ -96,8 +96,8 @@ pipelines:
       - name: stepC
         type: bash
         triggeredBy:
-          steps:
-            - stepA
+          resources:
+            - sampleImage
         execution:
           onExecute:
             - echo "executing stepC..."
