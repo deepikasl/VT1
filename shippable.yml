@@ -6,8 +6,8 @@ resources:
       integrationName: deepikaGithub
       branches:
         only: master
-      files:
-        only: '^\(.[a-z]*\)'
+     # files:
+      #  only: '^\(.[a-z]*\)'
     version:
       sha: master
   - name: utility_repo
