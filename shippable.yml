@@ -60,7 +60,7 @@ pipelines:
             - echo "executing stepA..."
             #- echo $step_triggered_by_step_name, $step_triggered_by_resource_name, $step_triggered_by_identity_name, $step_image_name, $step_image_tag, $step_runtime, $step_runtime_version, $step_platform, $step_node_id, $step_node_name, $step_node_pool_name, $step_affinity_group
             #- pushd $res_sampleNode_resourcePath
-            - echo $STEP_NAME, $step_name
+            - echo $step_type, $step_dependency_state_dir, $step_output_dir, $run_id
             - write_output sampleImage "imageTag="$STEP_ID
             - pushd $res_utility_repo_resourcePath
             - add_run_variable imageTag=$STEP_ID
