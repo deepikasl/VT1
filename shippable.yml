@@ -40,15 +40,6 @@ pipelines:
             - name: deepika_artifactory
           inputSteps: 
             - name: mvn_build
-#         setup:
-#           push:
-#             targetRepo: docker-local
-#         requires:
-#           integrations:
-#             - deepika_artifactory
-#         triggeredBy:
-#           steps:
-#             - build_ap
             
       - name: publish_ap
         type: PublishBuildInfo
@@ -59,9 +50,6 @@ pipelines:
             - name: push_ap
           outputResources:
             - name: buildInfo_ap
-        #requires:
-         # resources:
-          #  - sampleNodeNew
         execution:
           onStart:
             - lol
@@ -75,12 +63,6 @@ pipelines:
             - name: publish_ap
           outputResources:
             - name: buildInfo_ap
-        #requires:
-         # resources:
-          #  - sampleNodeNew
-        #execution:
-         # onStart:
-           # - lol
 
 
 
