@@ -48,6 +48,9 @@ pipelines:
         #requires:
          # resources:
           #  - sampleNodeNew
+        execution:
+          onStart:
+            - lol
 
 
 
