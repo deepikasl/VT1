@@ -65,6 +65,22 @@ pipelines:
         execution:
           onStart:
             - lol
+      
+      - name: promote_ap
+        type: PromoteBuild
+        configuration:
+          integrations:
+            - name: deepika_artifactory
+          inputSteps:
+            - name: publish_ap
+          outputResources:
+            - name: buildInfo_ap
+        #requires:
+         # resources:
+          #  - sampleNodeNew
+        #execution:
+         # onStart:
+           # - lol
 
 
 
