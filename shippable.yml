@@ -39,15 +39,15 @@ pipelines:
 #             - build_ap
             
       - name: publish_ap
-        type: publish
+        type: PublishBuildInfo
         configuration:
 #           inputSteps:
 #             - name: bash_ap
           outputResources:
             - name: buildInfo_ap
-        requires:
-          resources:
-            - sampleNodeNew
+        #requires:
+         # resources:
+          #  - sampleNodeNew
 
 
 
