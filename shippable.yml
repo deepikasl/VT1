@@ -39,11 +39,11 @@ pipelines:
         configuration:
           inputSteps:
             - name: push_ap
+          outputResources:
+            - name: buildInfo_ap
         requires:
           resources:
             - sampleNodeNew
-        outputResources:
-          - buildInfo_ap
 
 
 
