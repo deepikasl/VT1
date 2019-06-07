@@ -7,25 +7,12 @@ resources:
  
 pipelines:
   - name: pipeline1db
-    setup:
-      runtime: onHost
-      environmentVariables:
-        readOnly:
-          ENV1_pip: value1
-          ENV2_pip: value2  
     steps:
       - name: stepA
         type: bash
         configuration:
           affinityGroup: build
           nodePool: myNodePool
-        #configuration:
-         # nodePool: node
-        setup:
-          environmentVariables:
-            normal:
-              ENV1: value1
-              ENV2: value2
         requires:
           resources:
             - sampleNode
@@ -35,49 +22,9 @@ pipelines:
         execution:
           onExecute:
             - echo "executing stepA..."
-            #- echo $step_triggered_by_step_name, $step_triggered_by_resource_name, $step_triggered_by_identity_name, $step_image_name, $step_image_tag, $step_runtime, $step_runtime_version, $step_platform, $step_node_id, $step_node_name, $step_node_pool_name, $step_affinity_group
-            #- pushd $res_sampleNode_resourcePath
-            - echo $architecture, $shippable_api_url, $reqexec_dir, $builder_api_token, $no_verify_ssl, $step_docker_container_name, $pipeline_name, $running_in_container, $skip_before_exit_methods, $current_script_section
-            - write_output sampleImage "imageTag="$step_id
-            - pushd $res_utility_repo_resourcePath
-            - add_run_variable imageTag=$STEP_ID
-            - save_run_state echo.sh deepika_file
-            #- restore_run_state my_file test.sh
-        outputResources:
-          - sampleImage
+        #outputResources:
+         # - sampleImage
        
-      - name: stepB
-        type: bash
-        setup:
-          environmentVariables:
-            normal:
-              ENV3: value3
-              ENV4: value4
-        requires:
-          resources:
-            - sampleNode
-        triggeredBy:
-          steps:
-            - stepA
-        execution:
-          onExecute:
-            - echo "executing stepB..."
-            - echo "hi"
-  - name: pipeline2b
-    setup:
-      runtime: onHost
-      environmentVariables:
-        readOnly:
-          ENV1_pip2: value1
-          ENV2_pip2: value2  
-    steps:
-      - name: stepC
-        type: bash
-        triggeredBy:
-          resources:
-            - sampleImage
-        execution:
-          onExecute:
-            - echo "executing stepC..."
+
 
 
