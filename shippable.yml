@@ -17,6 +17,9 @@ pipelines:
     steps:
       - name: bash_ap
         type: bash
+        configuration:
+          inputResources
+            - name: sampleNodeNew
         execution:
           onExecute:
             - echo "tesfftyt"
