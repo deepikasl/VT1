@@ -19,6 +19,12 @@ pipelines:
       - name: mvn_build
         type: MvnBuild
         configuration:
+          sourceLocation: test
+          mvnCommand: test
+          configFileLocation: test
+          configFileName: test
+          integrations:
+            - name: deepika_artifactory
           inputResources:
             - name: sampleNodeNew
         execution:
