@@ -1,12 +1,12 @@
 resources:
   - name: sampleNodeNew
-    type: gitRepo
+    type: GitRepo
     configuration:
       gitProvider: deepikaGithub
       path: deepikasl/VT2
   
   - name: buildInfo_ap
-    type: buildInfo
+    type: BuildInfo
     version:
       buildName: $PIPELINE_NAME
       buildNumber: 1 # will be updated to $RUN_NUMBER after we have OUT in publish_ap step
