@@ -8,6 +8,7 @@ resources:
   - name: buildInfo_ap
     type: BuildInfo
     configuration:
+      sourceArtifactory: deepika_artifactory
       buildName: $PIPELINE_NAME
       buildNumber: 1 # will be updated to $RUN_NUMBER after we have OUT in publish_ap step
      # targetRepo: test
