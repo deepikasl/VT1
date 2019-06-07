@@ -19,7 +19,7 @@ pipelines:
       - name: mvn_build
         type: MvnBuild
         configuration:
-          inputResources
+          inputResources:
             - name: sampleNodeNew
         execution:
           onExecute:
