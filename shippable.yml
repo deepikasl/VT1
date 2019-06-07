@@ -22,23 +22,23 @@ pipelines:
             - echo "tesfftyt"
             - printenv
 
-      - name: push_ap
-        type: PushArtifactoryPackage
-        setup:
-          push:
-            targetRepo: docker-local
-        requires:
-          integrations:
-            - deepika_artifactory
-        triggeredBy:
-          steps:
-            - build_ap
+#       - name: push_ap
+#         type: PushArtifactoryPackage
+#         setup:
+#           push:
+#             targetRepo: docker-local
+#         requires:
+#           integrations:
+#             - deepika_artifactory
+#         triggeredBy:
+#           steps:
+#             - build_ap
             
       - name: publish_ap
         type: publish
         configuration:
           inputSteps:
-            - name: push_ap
+            - name: bash_ap
           outputResources:
             - name: buildInfo_ap
         requires:
