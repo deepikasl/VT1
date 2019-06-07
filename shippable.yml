@@ -26,8 +26,11 @@ pipelines:
 #             - echo "tesfftyt"
 #             - printenv
 
-#       - name: push_ap
-#         type: PushArtifactoryPackage
+      - name: push_ap
+        type: PushArtifactoryPackage
+        configuration:
+          integrations:
+            - name: deepika_artifactory
 #         setup:
 #           push:
 #             targetRepo: docker-local
@@ -41,8 +44,8 @@ pipelines:
       - name: publish_ap
         type: PublishBuildInfo
         configuration:
-#           inputSteps:
-#             - name: bash_ap
+          integrations:
+            - name: deepika_artifactory
           outputResources:
             - name: buildInfo_ap
         #requires:
