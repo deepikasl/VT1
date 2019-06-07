@@ -4,27 +4,46 @@ resources:
     configuration:
       gitProvider: deepikaGithub
       path: deepikasl/VT2
+  
+  - name: buildInfo_ap
+    type: buildInfo
+    version:
+      buildName: $PIPELINE_NAME
+      buildNumber: 1 # will be updated to $RUN_NUMBER after we have OUT in publish_ap step
+     # targetRepo: test
  
 pipelines:
   - name: pipeline1db
     steps:
-      - name: stepA
+      - name: bash_ap
         type: bash
-        configuration:
-          affinityGroup: build
-          nodePool: myNodePool
-        requires:
-          resources:
-            - sampleNode
-        triggeredBy:
-          resources:
-            - utility_repo
         execution:
           onExecute:
-            - echo "executing stepA..."
-        #outputResources:
-         # - sampleImage
-       
+            - echo "tesfftyt"
+            - printenv
+
+      - name: push_ap
+        type: PushArtifactoryPackage
+        setup:
+          push:
+            targetRepo: docker-local
+        requires:
+          integrations:
+            - deepika_artifactory
+        triggeredBy:
+          steps:
+            - build_ap
+            
+      - name: publish_ap
+        type: publish
+        configuration:
+          inputSteps:
+            - name: push_ap
+        requires:
+          resources:
+            - sampleNodeNew
+        outputResources:
+          - buildInfo_ap
 
 
 
