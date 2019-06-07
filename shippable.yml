@@ -29,6 +29,7 @@ pipelines:
       - name: push_ap
         type: PushArtifactoryPackage
         configuration:
+          targetRepo: lalal
           integrations:
             - name: deepika_artifactory
           inputSteps: 
