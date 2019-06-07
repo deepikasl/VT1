@@ -16,21 +16,23 @@ resources:
 pipelines:
   - name: pipeline1db
     steps:
-#       - name: bash_ap
-#         type: bash
-#         configuration:
-#           inputResources
-#             - name: sampleNodeNew
-#         execution:
-#           onExecute:
-#             - echo "tesfftyt"
-#             - printenv
+      - name: mvn_build
+        type: MvnBuild
+        configuration:
+          inputResources
+            - name: sampleNodeNew
+        execution:
+          onExecute:
+            - echo "tesfftyt"
+            - printenv
 
       - name: push_ap
         type: PushArtifactoryPackage
         configuration:
           integrations:
             - name: deepika_artifactory
+          inputSteps: 
+            - name: mvn_build
 #         setup:
 #           push:
 #             targetRepo: docker-local
