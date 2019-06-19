@@ -5,22 +5,11 @@ resources:
       path: deepikasl/VT2
       gitProvider: deepikaGithub
   - name: utility_repo
-    type: gitRepo
+    type: GitRepo
     repoPath: deepikasl/sample-script
     configuration:
-      integrationName: deepikaGithub
-      branches:
-        only: test
-    version:
-      sha: test
-  - name: sampleImage
-    type: image
-    imageName: library/nginx
-    configuration:
-      integrationName: deepikaDocker
-      autoPull: false
-    version:
-      imageTag: latest
+      path: deepikasl/sample-script
+      gitProvider: deepikaGithub
  
 pipelines:
   - name: pipeline1db
@@ -46,27 +35,5 @@ pipelines:
         execution:
           onExecute:
             - echo "executing stepA..."
-            - pushd $res_utility_repo_resourcePath
-            - add_run_variable imageTag=$STEP_ID
-            - save_run_state echo.sh deepika_file
-            #- restore_run_state my_file test.sh
-        outputResources:
-          - sampleImage
-       
-      - name: stepB
-        type: Bash
-        configuration:
-          environmentVariables:
-            normal:
-              ENV3: value3
-              ENV4: value4
-          inputResources:
-            - name: sampleNode
-          inputSteps:
-            - name: stepA
-        execution:
-          onExecute:
-            - echo "executing stepB..."
-            - echo "hi"
 
 
