@@ -1,15 +1,9 @@
 resources:
   - name: sampleNode
-    type: gitRepo
-    repoPath: deepikasl/VT2
+    type: GitRepo
     configuration:
-      integrationName: deepikaGithub
-      branches:
-        only: master
-     # files:
-      #  only: '^\(.[a-z]*\)'
-    version:
-      sha: master
+      path: deepikasl/VT2
+      gitProvider: deepikaGithub
   - name: utility_repo
     type: gitRepo
     repoPath: deepikasl/sample-script
@@ -38,30 +32,20 @@ pipelines:
           ENV2_pip: value2  
     steps:
       - name: stepA
-        type: bash
+        type: Bash
         configuration:
           affinityGroup: build
           nodePool: myNodePool
-        #configuration:
-         # nodePool: node
-        setup:
           environmentVariables:
             normal:
               ENV1: value1
               ENV2: value2
-        requires:
-          resources:
-            - sampleNode
-        triggeredBy:
-          resources:
-            - utility_repo
+          inputResources:
+            - name: sampleNode
+            - name: utility_repo
         execution:
           onExecute:
             - echo "executing stepA..."
-            #- echo $step_triggered_by_step_name, $step_triggered_by_resource_name, $step_triggered_by_identity_name, $step_image_name, $step_image_tag, $step_runtime, $step_runtime_version, $step_platform, $step_node_id, $step_node_name, $step_node_pool_name, $step_affinity_group
-            #- pushd $res_sampleNode_resourcePath
-            #- echo $architecture, $shippable_api_url, $reqexec_dir, $builder_api_token, $no_verify_ssl, $step_docker_container_name, $pipeline_name, $running_in_container, $skip_before_exit_methods, $current_script_section
-            - write_output sampleImage "imageTag="$step_id
             - pushd $res_utility_repo_resourcePath
             - add_run_variable imageTag=$STEP_ID
             - save_run_state echo.sh deepika_file
@@ -70,18 +54,16 @@ pipelines:
           - sampleImage
        
       - name: stepB
-        type: bash
-        setup:
+        type: Bash
+        configuration:
           environmentVariables:
             normal:
               ENV3: value3
               ENV4: value4
-        requires:
-          resources:
-            - sampleNode
-        triggeredBy:
-          steps:
-            - stepA
+          inputResources:
+            - name: sampleNode
+          inputSteps:
+            - name: stepA
         execution:
           onExecute:
             - echo "executing stepB..."
