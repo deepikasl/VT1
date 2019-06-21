@@ -1,0 +1,8 @@
+pipelines:
+  - name: simple-bash-pipe
+    steps:
+      - name: start
+        type: Bash
+        execution:
+          onExecute:
+            - echo "hello world"
