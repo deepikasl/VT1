@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: deepikaGithub
-      path: manishas/VT2
+      path: deepikasl/VT2
   
   - name: myDockerImg_test
     type: Image
