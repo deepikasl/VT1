@@ -1,68 +1,45 @@
 resources:
-  - name: sampleNodeNew
+  - name: app1_deepika
     type: GitRepo
     configuration:
       gitProvider: deepikaGithub
-      path: deepikasl/VT2
+      path: manishas/VT2
   
-  - name: buildInfo_ap
-    type: BuildInfo
+  - name: myDockerImg_test
+    type: Image
     configuration:
-      sourceArtifactory: deepika_artifactory
-      buildName: $PIPELINE_NAME
-      buildNumber: 1 # will be updated to $RUN_NUMBER after we have OUT in publish_ap step
-     # targetRepo: test
- 
+      registry: art
+      imageName: demo/app
+      imageTag: latest
+      autoPull: false
+
 pipelines:
-  - name: pipeline1db
+
+  - name: test_pipeline_deepika
     steps:
-      - name: mvn_build
-        type: MvnBuild
+      - name: build_test
+        type: Bash
         configuration:
-          sourceLocation: test
-          mvnCommand: test
-          configFileLocation: test
-          configFileName: test
-          integrations:
-            - name: deepika_artifactory
           inputResources:
-            - name: sampleNodeNew
+            - name: app1_deepika
+          outputResources:
+            - name: myDockerImg_test
         execution:
           onExecute:
-            - echo "tesfftyt"
             - printenv
+            - pushd $res_app1_deepika_resourcePath
+            - docker build -t app1_deepika:$step_id .
+            - write_output myDockerImg_test "imageTag="$step_id
+            - add_run_variables imageName=$res_myDockerImg_test_imageName
+            - add_run_variables imageTag=$step_id
+         
 
-      - name: push_ap
-        type: PushArtifactoryPackage
+
+      - name: test_deepika
+        type: Bash
         configuration:
-          targetRepo: lalal
-          integrations:
-            - name: deepika_artifactory
-          inputSteps: 
-            - name: mvn_build
-            
-      - name: publish_ap
-        type: PublishBuildInfo
-        configuration:
-          integrations:
-            - name: deepika_artifactory
-          inputSteps:
-            - name: push_ap
-          outputResources:
-            - name: buildInfo_ap
+          inputResources:
+            - name: myDockerImg_test
         execution:
-          onStart:
-            - lol
-      
-      - name: promote_ap
-        type: PromoteBuild
-        configuration:
-          integrations:
-            - name: deepika_artifactory
-          inputSteps:
-            - name: publish_ap
-          outputResources:
-            - name: buildInfo_ap
-
-
-
+          onExecute:
+            - printenv
