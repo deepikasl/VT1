@@ -76,9 +76,9 @@ pipelines:
         configuration:
           targetRepository: promote-test
           comment: "comment test"
-#           status: "ready"
-#           copy: true
-#           includeDependencies: true
+          status: "ready"
+          copy: true
+          includeDependencies: true
           integrations:
             - name: art
           inputResources:
