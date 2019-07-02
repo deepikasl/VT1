@@ -1,8 +1,88 @@
+resources:
+  - name: artifactory_go_example
+    type: GitRepo
+    configuration:
+      path: deepikasl/artifactory-go-example
+      gitProvider: deepikaGithub
+
+  - name: go_build_info_publish
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: go_example_build_publish
+      buildNumber: 1
+  - name: unsigned_release_bundle_go_publish
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: dist
+      name: go-service
+      version: 0.1.22
+  - name: signed_release_bundle_go_publish
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: dist
+      name: go-service
+      version: 0.1.22
+  - name: dist_release_bundle_go_publish
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: dist
+      name: test
+      version: 0.1.22
+  - name: promoted_go_build_info_go_publish
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: promote_go_build_publish
+      buildNumber: 1
+  - name: distribution_rule_go_publish
+    type: DistributionRule
+    configuration:
+      sourceDistribution: dist
+      cityName: "*"
+      serviceName: "*"
+      siteName: "*"
+      countryCodes:
+        - CN
+
 pipelines:
-  - name: simple-bash-pipe
+  - name: go_publish_example
     steps:
-      - name: start
-        type: Bash
+      - name: publish_go
+        type: GoPublishModule
+        configuration:
+          sourceLocation: .
+          version: v1.2.1
+          targetRepository: test-go-local
+          deps: all
+          inputResources:
+            - name: artifactory_go_example
+          integrations:
+            - name: art
         execution:
-          onExecute:
-            - echo "hello world"
+          onStart:
+            - wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
+            - sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
+            - export PATH=$PATH:/usr/local/go/bin
+            - go version
+      - name: publish_build_info
+        type: PublishBuildInfo
+        configuration:
+          inputSteps:
+            - name: publish_go
+          outputResources:
+            - name: go_build_info_publish
+      - name: promote_build_go
+        type: PromoteBuild
+        configuration:
+          targetRepository: promote-test
+          comment: "comment test"
+          status: "ready"
+          copy: true
+          includeDependencies: true
+          integrations:
+            - name: art
+          inputResources:
+            - name: go_build_info_publish
+          outputResources:
+            - name: promoted_go_build_info_go_publish
