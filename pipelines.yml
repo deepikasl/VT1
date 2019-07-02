@@ -75,10 +75,10 @@ pipelines:
         type: PromoteBuild
         configuration:
           targetRepository: promote-test
-          comment: "comment test"
+          #comment: "comment test"
           status: "ready test"
-          copy: true
-          includeDependencies: true
+#           copy: true
+#           includeDependencies: true
           integrations:
             - name: art
           inputResources:
