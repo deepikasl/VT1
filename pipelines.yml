@@ -75,7 +75,7 @@ pipelines:
         type: PromoteBuild
         configuration:
           targetRepository: promote-test
-          comment: "comment"
+          comment: "comment test"
           status: "ready"
 #           copy: true
 #           includeDependencies: true
