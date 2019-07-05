@@ -10,6 +10,13 @@ resources:
     configuration:
       path: deepikasl/sample-script
       gitProvider: deepikaGithub
+  - name: myDockerImg_test
+    type: Image
+    configuration:
+      registry: artDocker
+      imageName: demo/app
+      imageTag: latest
+      autoPull: false
  
 pipelines:
   - name: pipeline1db
@@ -26,5 +33,6 @@ pipelines:
             - add_pipeline_variables test='test'
             - add_run_variables test=$res_sampleNode_path
             - add_run_variables testId=$step_id
+            - write_output myDockerImg_test "imageTag="$step_id 
 
 
