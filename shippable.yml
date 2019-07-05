@@ -10,13 +10,6 @@ resources:
     configuration:
       path: deepikasl/sample-script
       gitProvider: deepikaGithub
-#   - name: kubeClusterIntegrationResource
-#     type: KubeCluster
-#     configuration:
-#       kubernetesConfig: kubeInt
-#        bastionHostIP: 1.2.3.4
-#        bastionUser: sshUser
-#        bastionIntegrationName: sshKeyIntegration
  
 pipelines:
   - name: pipeline1db
@@ -26,11 +19,11 @@ pipelines:
         configuration:
           inputResources:
             - name: sampleNode
-#             - name: kubeClusterIntegrationResource
         execution:
           onExecute:
             - echo "executing stepA..."
             - add_pipeline_variables pipelineId=$pipeline_id
+            - add_pipeline_variables test='test'
             - add_run_variables test=$res_sampleNode_path
             - add_run_variables testId=$step_id
 
