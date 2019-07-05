@@ -26,6 +26,8 @@ pipelines:
         configuration:
           inputResources:
             - name: sampleNode
+          outputResources:
+            - name: myDockerImg_test
         execution:
           onExecute:
             - echo "executing stepA..."
