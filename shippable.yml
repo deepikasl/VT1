@@ -31,11 +31,11 @@ pipelines:
         execution:
           onExecute:
             - echo "executing stepA..."
-            - add_pipeline_variables pipelineId=$pipeline_id
-            - add_pipeline_variables test='test'
-            - add_run_variables test=$res_sampleNode_path
-            - add_run_variables testId=$step_id
-            - write_output myDockerImg_test "imageTag="$step_id 
+#             - add_pipeline_variables pipelineId=$pipeline_id
+#             - add_pipeline_variables test='test'
+#             - add_run_variables test=$res_sampleNode_path
+#             - add_run_variables testId=$step_id
+#             - write_output myDockerImg_test "imageTag="$step_id 
 #       - name: stepB
 #         type: Bash
 #         configuration:
