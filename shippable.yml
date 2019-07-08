@@ -36,11 +36,11 @@ pipelines:
             - add_run_variables test=$res_sampleNode_path
             - add_run_variables testId=$step_id
             - write_output myDockerImg_test "imageTag="$step_id 
-      - name: stepB
-        type: Bash
-        configuration:
-          inputResources:
-            - name: myDockerImg_test
-        execution:
-          onExecute:
-            - echo "executing stepB"
+#       - name: stepB
+#         type: Bash
+#         configuration:
+#           inputResources:
+#             - name: myDockerImg_test
+#         execution:
+#           onExecute:
+#             - echo "executing stepB"
