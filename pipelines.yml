@@ -85,24 +85,24 @@ pipelines:
             - name: go_build_info_publish
           outputResources:
             - name: promoted_go_build_info_go_publish
-      - name: bundle_go_publish
-        type: CreateReleaseBundle
-        configuration:
-          #dryRun: false
-          description: "This is to test GoPublishModule -> PublishBuildInfo -> Promote -> CreateRelease -> Sign -> Distribute pipeline chain"
-          releaseBundleName: go-service
-          releaseBundleVersion: v0.1.$run_number
-          sign: false
-          inputResources:
-            - name: promoted_go_build_info_go_publish
-          outputResources:
-            - name: unsigned_release_bundle_go_publish
-          releaseNotes:
-            syntax: markdown
-            content: |
-              ## Heading
-                * Bullet
-                * Points
+#       - name: bundle_go_publish
+#         type: CreateReleaseBundle
+#         configuration:
+#           #dryRun: false
+#           description: "This is to test GoPublishModule -> PublishBuildInfo -> Promote -> CreateRelease -> Sign -> Distribute pipeline chain"
+#           releaseBundleName: go-service
+#           releaseBundleVersion: v0.1.$run_number
+#           sign: false
+#           inputResources:
+#             - name: promoted_go_build_info_go_publish
+#           outputResources:
+#             - name: unsigned_release_bundle_go_publish
+#           releaseNotes:
+#             syntax: markdown
+#             content: |
+#               ## Heading
+#                 * Bullet
+#                 * Points
 #       - name: sign_release_bundle_go_publish
 #         type: SignReleaseBundle
 #         configuration:
