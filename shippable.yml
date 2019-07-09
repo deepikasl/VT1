@@ -21,7 +21,7 @@ resources:
 pipelines:
   - name: pipeline1db
     steps:
-      - name: stepA
+      - name: stepAA
         type: Bash
         configuration:
           inputResources:
