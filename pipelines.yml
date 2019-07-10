@@ -51,6 +51,8 @@ pipelines:
       - name: publish_go
         type: GoPublishModule
         configuration:
+          runtime:
+            type: host
           sourceLocation: .
           version: v1.2.1
           targetRepository: test-go-local
