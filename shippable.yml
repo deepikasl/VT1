@@ -25,7 +25,7 @@ pipelines:
         type: Bash
         configuration:
           runtime:
-            type: image
+            type: image1
             image:
               custom:
                 name: test
