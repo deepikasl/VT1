@@ -27,7 +27,7 @@ pipelines:
           runtime:
             type: image
             image:
-              custom:
+              auto:
 #                 name: test
 #                 tag: test
                 language: test
