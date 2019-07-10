@@ -25,7 +25,9 @@ pipelines:
         type: Bash
         configuration:
           runtime:
-            type: host
+            type: image
+            image:
+              auto
           inputResources:
             - name: sampleNode
           outputResources:
