@@ -26,9 +26,9 @@ pipelines:
         configuration:
           runtime:
             type: image
-#             image:
-#               custom:
-#                 language: test
+            image:
+              custom:
+                language: test
           inputResources:
             - name: sampleNode
           outputResources:
