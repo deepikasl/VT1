@@ -30,6 +30,7 @@ pipelines:
               custom:
                 name: test
                 tag: test
+                language: test
           inputResources:
             - name: sampleNode
           outputResources:
