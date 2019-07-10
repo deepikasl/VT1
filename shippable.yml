@@ -24,6 +24,8 @@ pipelines:
       - name: stepAA
         type: Bash
         configuration:
+          runtime:
+            type: host1
           inputResources:
             - name: sampleNode
           outputResources:
