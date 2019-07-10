@@ -27,7 +27,7 @@ pipelines:
           runtime:
             type: image
             image:
-              auto
+              auto: check
           inputResources:
             - name: sampleNode
           outputResources:
