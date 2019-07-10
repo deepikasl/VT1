@@ -28,8 +28,8 @@ pipelines:
             type: image
             image:
               custom:
-#                 name: test
-#                 tag: test
+                name: test
+                tag: test
                 language: test
           inputResources:
             - name: sampleNode
