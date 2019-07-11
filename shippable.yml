@@ -1,46 +1,11 @@
-resources:
-  - name: sampleNode
-    type: GitRepo
-    configuration:
-      path: deepikasl/VT2
-      gitProvider: deepikaGithub
-  - name: utility_repo
-    type: GitRepo
-    repoPath: deepikasl/sample-script
-    configuration:
-      path: deepikasl/sample-script
-      gitProvider: deepikaGithub
-  - name: myDockerImg_test
-    type: Image
-    configuration:
-      registry: artDocker
-      imageName: demo/app
-      imageTag: latest
-      autoPull: false
- 
 pipelines:
-  - name: pipeline1db
+  - name: pipeline2db
     steps:
-      - name: stepAA
+      - name: stepB
         type: Bash
         configuration:
           inputResources:
-            - name: sampleNode
-          outputResources:
             - name: myDockerImg_test
         execution:
           onExecute:
-            - echo "executing stepA..."
-            - add_pipeline_variables pipelineId=$pipeline_id
-            - add_pipeline_variables test='test'
-            - add_run_variables test=$res_sampleNode_path
-            - add_run_variables testId=$step_id
-            - write_output myDockerImg_test "imageTag="$step_id 
-#       - name: stepB
-#         type: Bash
-#         configuration:
-#           inputResources:
-#             - name: myDockerImg_test
-#         execution:
-#           onExecute:
-#             - echo "executing stepB"
+            - echo "executing stepB"
