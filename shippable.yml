@@ -1,11 +1,18 @@
 pipelines:
   - name: pipeline2db
     steps:
+      - name: stepB2
+        type: Bash
+        execution:
+          onExecute:
+            - echo "executing stepB2"
       - name: stepB
         type: Bash
         configuration:
           inputResources:
             - name: myDockerImg_test
+          inputSteps:
+            - name: stepB2
         execution:
           onExecute:
             - echo "executing stepB"
