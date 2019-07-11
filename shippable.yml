@@ -24,13 +24,6 @@ pipelines:
       - name: stepAA
         type: Bash
         configuration:
-          runtime:
-            type: image
-            image:
-              auto:
-#                 name: test
-#                 tag: test
-                language: test
           inputResources:
             - name: sampleNode
           outputResources:
