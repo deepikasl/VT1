@@ -6,7 +6,6 @@ resources:
       gitProvider: deepikaGithub
   - name: utility_repo
     type: GitRepo
-    repoPath: deepikasl/sample-script
     configuration:
       path: deepikasl/sample-script
       gitProvider: deepikaGithub
