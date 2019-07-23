@@ -16,6 +16,10 @@ resources:
       imageName: demo/app
       imageTag: latest
       autoPull: false
+  - name: myFile
+    type: RemoteFile
+    configuration:
+      source: dummyFileServer
  
 pipelines:
   - name: pipeline1db
@@ -39,6 +43,8 @@ pipelines:
       - name: stepB
         type: Bash
         configuration:
+          inputResources:
+            - name: myFile
           inputSteps:
             - name: stepAA
         execution:
