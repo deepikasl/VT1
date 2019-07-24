@@ -24,7 +24,7 @@ resources:
     type: FileSpec
     configuration:
       sourceArtifactory: art
-      pattern: test-generic-local/*.zip
+      pattern: test-generic-local/*.zipp
  
 pipelines:
   - name: pipeline1db
