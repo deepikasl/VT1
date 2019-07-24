@@ -20,6 +20,11 @@ resources:
     type: RemoteFile
     configuration:
       source: dummyFileServer
+  - name: files
+    type: FileSpec
+    configuration:
+      sourceArtifactory: art
+      pattern: deepika-generic/*.txt
  
 pipelines:
   - name: pipeline1db
@@ -44,7 +49,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: myFile
+            - name: files
           inputSteps:
             - name: stepAA
         execution:
