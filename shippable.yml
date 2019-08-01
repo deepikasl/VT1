@@ -9,22 +9,22 @@ resources:
     configuration:
       path: deepikasl/sample-script
       gitProvider: deepikaGithub
-  - name: myDockerImg_test
-    type: Image
-    configuration:
-      registry: artDocker
-      imageName: demo/app
-      imageTag: latest
-      autoPull: false
-  - name: myFile
-    type: RemoteFile
-    configuration:
-      source: dummyFileServer
-  - name: files
-    type: FileSpec
-    configuration:
-      sourceArtifactory: art
-      pattern: test-generic-local/*.zip
+#   - name: myDockerImg_test
+#     type: Image
+#     configuration:
+#       registry: artDocker
+#       imageName: demo/app
+#       imageTag: latest
+#       autoPull: false
+#   - name: myFile
+#     type: RemoteFile
+#     configuration:
+#       source: dummyFileServer
+#   - name: files
+#     type: FileSpec
+#     configuration:
+#       sourceArtifactory: art
+#       pattern: test-generic-local/*.zip
  
 pipelines:
   - name: pipeline1db
@@ -34,8 +34,8 @@ pipelines:
         configuration:
           inputResources:
             - name: sampleNode
-          outputResources:
-            - name: myDockerImg_test
+#           outputResources:
+#             - name: myDockerImg_test
         execution:
           onExecute:
             - echo "executing stepA..."
@@ -45,15 +45,15 @@ pipelines:
 #             - add_run_variables test=$res_sampleNode_path
 #             - add_run_variables testId=$step_id
 #             - write_output myDockerImg_test "imageTag="$step_id 
-      - name: stepB
-        type: Bash
-        configuration:
-          inputResources:
-            - name: files
-          inputSteps:
-            - name: stepAA
-        execution:
-          onExecute:
-            - echo "executing stepB"
-            - if [[ $(($pipeline_var % 2)) -eq 0 ]]; then run_var+=" world"; else run_var+=" universe"; fi
-            - echo $run_var
+#       - name: stepB
+#         type: Bash
+#         configuration:
+#           inputResources:
+#             - name: files
+#           inputSteps:
+#             - name: stepAA
+#         execution:
+#           onExecute:
+#             - echo "executing stepB"
+#             - if [[ $(($pipeline_var % 2)) -eq 0 ]]; then run_var+=" world"; else run_var+=" universe"; fi
+#             - echo $run_var
