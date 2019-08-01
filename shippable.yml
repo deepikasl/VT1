@@ -64,3 +64,5 @@ pipelines:
         configuration:
           integrations:
             - name: test_jenkins
+          inputSteps:
+            - name: stepAA
