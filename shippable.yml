@@ -59,3 +59,8 @@ pipelines:
 #             - echo "executing stepB"
 #             - if [[ $(($pipeline_var % 2)) -eq 0 ]]; then run_var+=" world"; else run_var+=" universe"; fi
 #             - echo $run_var
+        - name: testJenkins
+          type: Jenkins
+          configuration:
+            integrations:
+              - name: test_jenkins
