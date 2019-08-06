@@ -1,49 +1,18 @@
-resources:
-  - name: file_res_1
-    type: file
-    configuration:
-      integrationName: deepika_artifactory
-    version:
-      fileLocation: " example-repo-local"
-      fileName: "archive.zip"
-   
-  - name: file_res_2
-    type: file
-    configuration:
-      integrationName: deepika_artifactory
-    version:
-      pattern: "demo/app/"
-      flat: false
-      recursive: true
-      target: "ankul_local_repo/"
-      limit: 5
-      offset: 5
-  - name: sampleRepo
-    type: gitRepo
-    repoPath: deepikasl/VT1
-    configuration:
-      integrationName: deepikaGithub
-      #branches:
-       # only: master
-      #files:
-       # only: '^\(.[a-z]*\)'
-    version:
-      sha: master
       
 pipelines:
   - name: deepika_pipeline
     steps:
       - name: step_1
-        type: bash
-        triggeredBy:
-          resources:
-            #- file_res_1
-            - sampleRepo
+        type: Bash
         execution:
           onExecute:
-            - printenv
-            - sudo apt-get install tree
-            - tree $res_file_res_1_resourcePath
-            - tree $res_file_res_2_resourcePath
-            #- cat $STEP_TMP_DIR/fileSpecs.json
-            - echo change_1
+            - echo "hi"
+      - name: step_2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - echo "hi1"
+            
