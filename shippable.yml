@@ -66,3 +66,12 @@ pipelines:
             - name: test_jenkins
           inputSteps:
             - name: stepAA
+            
+      - name: stepB
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: testJenkins
+        execution:
+          onExecute:
+            - echo "executing stepB..."
