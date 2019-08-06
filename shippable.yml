@@ -82,8 +82,8 @@ pipelines:
         configuration:
           integrations:
             - name: test_jenkins
-          inputSteps:
-            - name: stepAA
+#           inputSteps:
+#             - name: stepAA
       - name: stepB
         type: Bash
         configuration:
