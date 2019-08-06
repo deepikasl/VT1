@@ -75,3 +75,13 @@ pipelines:
 #         execution:
 #           onExecute:
 #             - echo "executing stepB..."
+  - name: pipeline2db
+    steps:          
+      - name: stepB
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: testJenkins
+        execution:
+          onExecute:
+            - echo "executing stepB..."
