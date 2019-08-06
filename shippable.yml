@@ -77,6 +77,13 @@ pipelines:
 #             - echo "executing stepB..."
   - name: pipeline2db
     steps:          
+      - name: testJenkins
+        type: Jenkins
+        configuration:
+          integrations:
+            - name: test_jenkins
+          inputSteps:
+            - name: stepAA
       - name: stepB
         type: Bash
         configuration:
