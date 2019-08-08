@@ -1,14 +1,10 @@
 resources:
-  - name: sampleNode
-    type: GitRepo
+  - name: testRes
+    type: BuildInfo
     configuration:
-      path: deepikasl/VT2
-      gitProvider: deepikaGithub
-  - name: utility_repo
-    type: GitRepo
-    configuration:
-      path: deepikasl/sample-script
-      gitProvider: deepikaGithub
+      sourceArtifactory: art
+      buildName: promote_go_build_publish
+      buildNumber: 1
 #   - name: myDockerImg_test
 #     type: Image
 #     configuration:
@@ -34,6 +30,8 @@ pipelines:
         configuration:
           integrations:
             - name: test_jenkins
+          outputResources:
+            - name: testRes
 
       - name: stepB
         type: Bash
