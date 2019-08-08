@@ -87,26 +87,8 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: testJenkins
+            - name: testJenkins_2
         execution:
           onExecute:
             - echo "executing stepB..."
-  - name: pipeline3db
-    steps:          
-      - name: testJenkins
-        type: Bash
-        configuration:
-          integrations:
-            - name: test_jenkins
-        execution:
-          onExecute:
-            - echo "executing testJenkins..."
-
-      - name: stepC
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: testJenkins
-        execution:
-          onExecute:
-            - echo "executing stepC..."
+  
