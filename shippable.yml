@@ -41,3 +41,11 @@ pipelines:
           onExecute:
             - echo "executing stepB..."
   
+      - name: stepC
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: testJenkins_2
+        execution:
+          onExecute:
+            - echo "executing stepB..."
