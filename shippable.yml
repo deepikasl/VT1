@@ -30,8 +30,8 @@ pipelines:
         configuration:
           integrations:
             - name: jenkins
-          outputResources:
-            - name: testRes
+#           outputResources:
+#             - name: testRes
 
       - name: stepB
         type: Bash
