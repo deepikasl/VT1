@@ -30,14 +30,14 @@ pipelines:
         configuration:
           integrations:
             - name: jenkins
-#           outputResources:
-#             - name: testRes
+          inputResources:
+            - name: testRes
+          inputSteps:
+            - name: stepB
 
       - name: stepB
         type: Bash
         configuration:
-          inputSteps:
-            - name: testJenkins_2
         execution:
           onExecute:
             - echo "executing stepB..."
