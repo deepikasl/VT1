@@ -29,7 +29,7 @@ pipelines:
         type: Jenkins
         configuration:
           integrations:
-            - name: test_jenkins
+            - name: jenkins
           outputResources:
             - name: testRes
 
