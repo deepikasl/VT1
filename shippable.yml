@@ -14,7 +14,7 @@ pipelines:
         configuration:
           integrations:
             - name: jenkins
-          inputResources:
+          outputResources:
             - name: testRes
   
       - name: stepB
