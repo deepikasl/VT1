@@ -3,24 +3,8 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: art
-      buildName: promote_go_build_publish
+      buildName: test
       buildNumber: 1
-#   - name: myDockerImg_test
-#     type: Image
-#     configuration:
-#       registry: artDocker
-#       imageName: demo/app
-#       imageTag: latest
-#       autoPull: false
-#   - name: myFile
-#     type: RemoteFile
-#     configuration:
-#       source: dummyFileServer
-#   - name: files
-#     type: FileSpec
-#     configuration:
-#       sourceArtifactory: art
-#       pattern: test-generic-local/*.zip
  
 pipelines:
   - name: pipeline2db
@@ -32,16 +16,8 @@ pipelines:
             - name: jenkins
           inputResources:
             - name: testRes
-          inputSteps:
-            - name: stepB
-
-      - name: stepB
-        type: Bash
-        execution:
-          onExecute:
-            - echo "executing stepB..."
   
-      - name: stepC
+      - name: stepB
         type: Bash
         configuration:
           inputSteps:
