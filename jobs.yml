@@ -15,5 +15,5 @@ pipelines:
             - name: github
         execution:
           onExecute:
-            - echo "executing bash..."
+            - echo "executing bash1..."
   
