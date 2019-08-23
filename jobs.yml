@@ -11,7 +11,7 @@ pipelines:
       - name: bash
         type: Bash
         configuration:
-          integrations:
+          inputResources:
             - name: github
         execution:
           onExecute:
