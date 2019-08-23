@@ -1,5 +1,19 @@
-jobs:
-  - name: job1
-    type: manifest
-    steps:
-      - GET nginx
+resources:
+  - name: github
+    type: GitRepo
+    configuration:
+      path: deepikasl/VT1
+      gitProvider: deepikaGithub
+ 
+pipelines:
+  - name: pipeline
+    steps:          
+      - name: bash
+        type: Bash
+        configuration:
+          integrations:
+            - name: github
+        execution:
+          onExecute:
+            - echo "executing bash..."
+  
