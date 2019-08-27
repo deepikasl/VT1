@@ -1,9 +1,9 @@
 resources:
-  - name: github
-    type: GitRepo
-    configuration:
-      path: deepikasl/VT1
-      gitProvider: deepikaGithub
+#   - name: github
+#     type: GitRepo
+#     configuration:
+#       path: deepikasl/VT1
+#       gitProvider: deepikaGithub
   - name: myCronTrigger
     type: CronTrigger
     configuration:
@@ -16,7 +16,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: github
+#             - name: github
             - name: myCronTrigger
         execution:
           onExecute:
