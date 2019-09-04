@@ -5,6 +5,11 @@ resources:
 #       sourceArtifactory: art
 #       buildName: test
 #       buildNumber: 1
+  - name: github
+    type: GitRepo
+    configuration:
+      path: deepikasl/VT2
+      gitProvider: deepikaGithub
  
 pipelines:
   - name: pipeline2db
@@ -14,14 +19,16 @@ pipelines:
         configuration:
           integrations:
             - name: jenkins
+          inputResources:
+            - name: github
 #           outputResources:
 #             - name: testRes
   
-      - name: stepB
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: testJenkins_2
-        execution:
-          onExecute:
-            - echo "executing stepB..."
+#       - name: stepB
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: testJenkins_2
+#         execution:
+#           onExecute:
+#             - echo "executing stepB..."
