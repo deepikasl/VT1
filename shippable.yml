@@ -1,10 +1,10 @@
 resources:
-  - name: testRes
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: art
-      buildName: test
-      buildNumber: 1
+#   - name: testRes
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: art
+#       buildName: test
+#       buildNumber: 1
  
 pipelines:
   - name: pipeline2db
@@ -14,8 +14,8 @@ pipelines:
         configuration:
           integrations:
             - name: jenkins
-          outputResources:
-            - name: testRes
+#           outputResources:
+#             - name: testRes
   
       - name: stepB
         type: Bash
