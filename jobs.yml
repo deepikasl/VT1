@@ -9,10 +9,10 @@ resources:
     configuration:
       path: bharath92/sample-runsh
       gitProvider: bitbucket
-  - name: myCronTrigger
-    type: CronTrigger
-    configuration:
-      interval: "*/2 14 3 9 *"
+#   - name: myCronTrigger
+#     type: CronTrigger
+#     configuration:
+#       interval: "*/2 14 3 9 *"
  
 pipelines:
   - name: pipeline
