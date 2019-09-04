@@ -11,6 +11,11 @@ resources:
       sourceArtifactory: art
       buildName: promote_go_build_publish
       buildNumber: 1
+  - name: testRes
+    type: Aql
+    configuration:
+      sourceArtifactory: art
+      query: ""
 
 pipelines:
   - name: test_pipe
@@ -24,7 +29,8 @@ pipelines:
           releaseBundleVersion: v0.1.$run_number
           sign: false
           inputResources:
-            - name: promoted_go_build_info_go_publish
+#             - name: promoted_go_build_info_go_publish
+            - name: testRes
           outputResources:
             - name: unsigned_release_bundle_go_publish
           releaseNotes:
