@@ -19,6 +19,8 @@ pipelines:
             - cd $res_script_repo1_resourcePath
             - python -m py_compile calc.py
             #- sleep 20
+            - pip install --upgrade pip
+            - hash -d pip
             - pip install pytest
             - cd $res_script_repo1_resourcePath            
             - py.test --verbose --junit-xml test-reports/results.xml test_calc.py
