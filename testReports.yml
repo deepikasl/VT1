@@ -1,0 +1,25 @@
+resources:
+  - name: script_repo1
+    type: GitRepo
+    configuration:
+      gitProvider: deepikaGithub
+      path: deepikasl/sample-script
+      
+pipelines:
+  - name: test_reports_pipe
+    steps:
+      - name: testReport_u16
+        type: Bash
+        configuration:
+          inputResources:
+            - name: script_repo1
+        execution:
+          onExecute:
+            - printenv
+            - cd $res_script_repo1_resourcePath
+            - python -m py_compile calc.py
+            - sleep 20
+            - pip install pytest
+            - cd $res_script_repo1_resourcePath            
+            - py.test --verbose --junit-xml test-reports/results.xml test_calc.py
+            - save_tests $res_script_repo1_resourcePath/test-reports/results.xml     
