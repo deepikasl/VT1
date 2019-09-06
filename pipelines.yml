@@ -87,47 +87,47 @@ pipelines:
             - name: go_build_info_publish
           outputResources:
             - name: promoted_go_build_info_go_publish
-#       - name: bundle_go_publish
-#         type: CreateReleaseBundle
-#         configuration:
-#           #dryRun: false
-#           description: "This is to test GoPublishModule -> PublishBuildInfo -> Promote -> CreateRelease -> Sign -> Distribute pipeline chain"
-#           releaseBundleName: go-service
-#           releaseBundleVersion: v0.1.$run_number
-#           sign: false
-#           inputResources:
-#             - name: promoted_go_build_info_go_publish
-#           outputResources:
-#             - name: unsigned_release_bundle_go_publish
-#           releaseNotes:
-#             syntax: markdown
-#             content: |
-#               ## Heading
-#                 * Bullet
-#                 * Points
-#       - name: sign_release_bundle_go_publish
-#         type: SignReleaseBundle
-#         configuration:
-#           inputResources:
-#             - name: unsigned_release_bundle_go_publish
-#           outputResources:
-#             - name: signed_release_bundle_go_publish
-#       - name: distribute_signed_release_bundle
-#         type: DistributeReleaseBundle
-#         configuration:
-#           dryRun: false
-#           inputResources:
-#             - name: signed_release_bundle_go_publish
-#             - name: distribution_rule_go_publish
-#           integrations:
-#             - name: art
-#           outputResources:
-#             - name: dist_release_bundle_go_publish
-#       - name: testBash
-#         type: Bash
-#         configuration:
-#           inputResources:
-#             - name: dist_release_bundle_go_publish
-#         execution:
-#           onExecute:
-#             - echo "hi"
+      - name: bundle_go_publish
+        type: CreateReleaseBundle
+        configuration:
+          #dryRun: false
+          description: "This is to test GoPublishModule -> PublishBuildInfo -> Promote -> CreateRelease -> Sign -> Distribute pipeline chain"
+          releaseBundleName: go-service
+          releaseBundleVersion: v0.1.$run_number
+          sign: false
+          inputResources:
+            - name: promoted_go_build_info_go_publish
+          outputResources:
+            - name: unsigned_release_bundle_go_publish
+          releaseNotes:
+            syntax: markdown
+            content: |
+              ## Heading
+                * Bullet
+                * Points
+      - name: sign_release_bundle_go_publish
+        type: SignReleaseBundle
+        configuration:
+          inputResources:
+            - name: unsigned_release_bundle_go_publish
+          outputResources:
+            - name: signed_release_bundle_go_publish
+      - name: distribute_signed_release_bundle
+        type: DistributeReleaseBundle
+        configuration:
+          dryRun: false
+          inputResources:
+            - name: signed_release_bundle_go_publish
+            - name: distribution_rule_go_publish
+          integrations:
+            - name: art
+          outputResources:
+            - name: dist_release_bundle_go_publish
+      - name: testBash
+        type: Bash
+        configuration:
+          inputResources:
+            - name: dist_release_bundle_go_publish
+        execution:
+          onExecute:
+            - echo "hi"
