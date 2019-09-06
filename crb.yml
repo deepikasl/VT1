@@ -29,8 +29,8 @@ pipelines:
           releaseBundleVersion: v0.1.$run_number
           sign: false
           inputResources:
-#             - name: promoted_go_build_info_go_publish
-            - name: testRes
+            - name: promoted_go_build_info_go_publish
+#             - name: testRes
           outputResources:
             - name: unsigned_release_bundle_go_publish
           releaseNotes:
