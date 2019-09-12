@@ -2,7 +2,7 @@ resources:
   - name: github
     type: GitRepo
     configuration:
-      path: deepikasl/VT1
+      path: deepikasl/VT2
       gitProvider: deepikaGithub
 #   - name: bitbucket
 #     type: GitRepo
