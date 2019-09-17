@@ -26,4 +26,13 @@ pipelines:
         execution:
           onExecute:
             - echo "executing bash step..."
+      - name: bash2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: bash
+#             - name: myCronTrigger
+        execution:
+          onExecute:
+            - echo "executing bash2 step..."
   
