@@ -1,5 +1,5 @@
 resources:
-  - name: github
+  - name: github-demo
     type: GitRepo
     configuration:
       path: deepikasl/VT1
@@ -15,13 +15,13 @@ resources:
 #       interval: "*/2 14 3 9 *"
  
 pipelines:
-  - name: pipeline
+  - name: pipeline-demo
     steps:          
-      - name: bash
+      - name: bash-demo
         type: Bash
         configuration:
           inputResources:
-            - name: github
+            - name: github-demo
 #             - name: myCronTrigger
         execution:
           onExecute:
