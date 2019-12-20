@@ -1,0 +1,19 @@
+resources:
+  - name: image
+    type: Image
+    configuration:
+      registry: docker_image
+      imageName: shippabledocker/u16phpall
+      imageTag: test7.1
+ 
+pipelines:
+  - name: pipeline_docker
+    steps:          
+      - name: bash_docker
+        type: Bash
+        configuration:
+          inputResources:
+            - name: image
+        execution:
+          onExecute:
+            - docker images
