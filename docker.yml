@@ -3,8 +3,8 @@ resources:
     type: Image
     configuration:
       registry: docker_image
-      imageName: shippabledocker/u16phpall
-      imageTag: test7.1
+      imageName: shippabledocker/sample_node_pvt
+      imageTag: master
  
 pipelines:
   - name: pipeline_docker
