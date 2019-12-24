@@ -16,6 +16,13 @@ pipelines:
             - name: image
           integrations:
             - name: docker3
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions: 
+                  - 11
         execution:
           onExecute:
             - docker images
