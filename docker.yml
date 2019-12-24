@@ -14,6 +14,8 @@ pipelines:
         configuration:
           inputResources:
             - name: image
+          integrations:
+            - name: docker_image
         execution:
           onExecute:
             - docker images
