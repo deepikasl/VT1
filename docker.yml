@@ -22,7 +22,7 @@ pipelines:
               auto:
                 language: java
                 versions: 
-                  - 11
+                  - 11.5.5
         execution:
           onExecute:
             - docker images
