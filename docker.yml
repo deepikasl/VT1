@@ -1,4 +1,9 @@
 resources:
+  - name: github
+    type: GitRepo
+    configuration:
+      path: deepikasl/VT2
+      gitProvider: github
   - name: image
     type: Image
     configuration:
