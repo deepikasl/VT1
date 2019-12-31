@@ -17,7 +17,7 @@ pipelines:
           onExecute:
             - echo "executing bash step..."
             - mkdir /test
-            - add_pipeline_files /test state
+            - add_pipeline_files /test abcd
       - name: bash2
         type: Bash
         configuration:
