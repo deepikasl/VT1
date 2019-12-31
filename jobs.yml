@@ -16,6 +16,7 @@ pipelines:
         execution:
           onExecute:
             - echo "executing bash step..."
+            - add_pipeline_files /tmp/jfrog state
       - name: bash2
         type: Bash
         configuration:
