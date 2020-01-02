@@ -31,5 +31,5 @@ pipelines:
             - printenv
             - mkdir /test
             - cd /test && touch textFile.txt && echo "this is to test" > textFile.txt && cd ../
-            - add_pipeline_files /test abcd
+            - add_pipeline_files /test testFolder
   
