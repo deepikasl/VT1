@@ -27,7 +27,7 @@ pipelines:
           onExecute:
             - echo "executing bash2 step..."
             - printenv
-            - restore_pipeline_files abcd /test
-            - touch /testScript.sh
-            - add_pipeline_files /test abcd
+            - mkdir /test2
+            - touch test2/testScript.sh
+            - add_pipeline_files /test2 abcd
   
