@@ -18,9 +18,8 @@ pipelines:
           onExecute:
             - echo "this branch is {{gitBranch}} "
             - echo "executing bash step..."
-            - touch testFile.txt
-            - echo "this is to test" > testFile.txt
-            - add_pipeline_files testFile.txt state
+            - echo "state=$run_number" > pipeline_state.txt
+            - add_pipeline_files pipeline_state.txt pipeline_state_file
 #             - mkdir /test
 #             - cd /test && touch textFile.txt && echo "this is to test" > textFile.txt && cd ../
 #             - add_pipeline_files /test testFolder
