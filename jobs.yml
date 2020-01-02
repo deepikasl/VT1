@@ -4,7 +4,8 @@ resources:
     configuration:
       path: deepikasl/VT2
       gitProvider: deepikaGithub
- 
+      branches:
+        include: ^{{gitBranch}}$
 pipelines:
   - name: pipeline
     steps:          
@@ -15,6 +16,7 @@ pipelines:
             - name: github
         execution:
           onExecute:
+            - echo "this branch is {{gitBranch}} "
             - echo "executing bash step..."
             - mkdir /test
             - add_pipeline_files /test abcd
