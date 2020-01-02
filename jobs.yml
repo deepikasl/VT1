@@ -28,6 +28,6 @@ pipelines:
             - echo "executing bash2 step..."
             - printenv
             - mkdir /test2
-            - touch test2/testScript.sh
+            - cd /test2 && touch testScript.sh && cd ../
             - add_pipeline_files /test2 abcd
   
