@@ -19,7 +19,7 @@ pipelines:
             - echo "this branch is {{gitBranch}} "
             - echo "executing bash step..."
             - mkdir /test
-            - add_pipeline_files /test abcd
+            - add_pipeline_files /test testFolder
       - name: bash2
         type: Bash
         configuration:
@@ -30,6 +30,6 @@ pipelines:
             - echo "executing bash2 step..."
             - printenv
             - mkdir /test
-            - cd /test && touch testScript.sh && cd ../
+            - cd /test && touch textFile.txt && echo "this is to test" > textFile.txt && cd ../
             - add_pipeline_files /test abcd
   
