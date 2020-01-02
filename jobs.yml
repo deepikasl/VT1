@@ -26,6 +26,6 @@ pipelines:
         execution:
           onExecute:
             - echo "executing bash2 step..."
-            - cd /test && touch /testScript.sh
+            - cd /test && touch testScript.sh
             - add_pipeline_files /test/testScript.sh script.sh
   
