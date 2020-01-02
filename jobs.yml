@@ -27,4 +27,6 @@ pipelines:
         execution:
           onExecute:
             - echo "executing bash2 step..."
+            - touch testScript.sh
+            - add_pipeline_files /test/testScript.sh script.sh
   
