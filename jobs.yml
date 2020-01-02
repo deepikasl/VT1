@@ -29,7 +29,7 @@ pipelines:
           onExecute:
             - echo "executing bash2 step..."
             - printenv
-            - mkdir /test2
-            - cd /test2 && touch testScript.sh && cd ../
-            - add_pipeline_files /test2 abcd
+            - mkdir /test
+            - cd /test && touch testScript.sh && cd ../
+            - add_pipeline_files /test abcd
   
