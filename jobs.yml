@@ -15,6 +15,7 @@ pipelines:
             - name: github
         execution:
           onExecute:
+            - sleep 30
             - echo "executing bash step..."
             - mkdir /test
             - add_pipeline_files /test abcd
