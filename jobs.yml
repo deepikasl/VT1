@@ -1,9 +1,9 @@
 resources:
-  - name: github
+  - name: bbs
     type: GitRepo
     configuration:
-      path: deepikasl/VT2
-      gitProvider: deepikaGithub
+      path: ~DEEPIKAB/sample_pipelines
+      gitProvider: deepikaBbs
       branches:
         include: ^{{gitBranch}}$
 pipelines:
@@ -13,7 +13,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: github
+            - name: bbs
         execution:
           onExecute:
             - echo "this branch is {{gitBranch}} "
