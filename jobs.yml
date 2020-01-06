@@ -23,6 +23,8 @@ pipelines:
             - echo "state=$run_number" > run_state.txt
             - add_run_files run_state.txt run_state_file
             - echo "state=$run_number" > cache.txt
+            - restore_run_files run_state_file run_state.txt
+
             - add_cache_files cache.txt pipeline_state_cache
 #             - mkdir /test
 #             - cd /test && touch textFile.txt && echo "this is to test" > textFile.txt && cd ../
@@ -39,6 +41,5 @@ pipelines:
             - sleep 2m
             - restore_cache_files pipeline_state_cache cache.txt
             - restore_pipeline_files pipeline_state_file pipeline_state.txt
-            - restore_run_files run_state_file run_state.txt
 
   
