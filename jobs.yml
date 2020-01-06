@@ -35,5 +35,5 @@ pipelines:
             - echo "executing bash2 step..."
             - printenv
             - restore_cache_files pipeline_state_cache cache.txt
-
+            - restore_pipeline_files pipeline_state_file pipeline_state.txt
   
