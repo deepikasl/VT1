@@ -23,6 +23,8 @@ pipelines:
           inputResources:
             - name: bbs
             - name: buildInfo
+          integrations:
+            - name: jenkins
         execution:
           onExecute:
             - printenv
