@@ -6,6 +6,14 @@ resources:
       gitProvider: deepikaBbs
       branches:
         include: ^{{gitBranch}}$
+  - name: buildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: test
+      buildNumber: 1
+      externalCI: jenkins
+      
 pipelines:
   - name: pipeline
     steps:          
@@ -14,8 +22,10 @@ pipelines:
         configuration:
           inputResources:
             - name: bbs
+            - name: buildInfo
         execution:
           onExecute:
+            - printenv
             - echo "this branch is {{gitBranch}} "
             - echo "executing bash step..."
             - echo "state=$run_number" > pipeline_state.txt
