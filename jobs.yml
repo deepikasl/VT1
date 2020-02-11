@@ -13,6 +13,7 @@ resources:
 #     type: CronTrigger
 #     configuration:
 #       interval: "*/2 14 3 9 *"
+
  
 pipelines:
   - name: pipeline_demo
