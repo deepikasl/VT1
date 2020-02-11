@@ -26,4 +26,5 @@ pipelines:
         execution:
           onExecute:
             - echo "executing bash step..."
+            - sleep 30
   
