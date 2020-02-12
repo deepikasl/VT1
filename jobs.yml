@@ -2,8 +2,8 @@ resources:
   - name: github_demo
     type: GitRepo
     configuration:
-      path: deepikasl/VT2
-      gitProvider: deepikaGithub
+      path: ~DEEPIKAB/vt1
+      gitProvider: deepikaBBS
 #   - name: bitbucket
 #     type: GitRepo
 #     configuration:
