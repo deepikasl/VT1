@@ -2,17 +2,8 @@ resources:
   - name: github_demo
     type: GitRepo
     configuration:
-      path: ~DEEPIKAB/vt1
-      gitProvider: deepikaBBS
-#   - name: bitbucket
-#     type: GitRepo
-#     configuration:
-#       path: bharath92/sample-runsh
-#       gitProvider: bitbucket
-#   - name: myCronTrigger
-#     type: CronTrigger
-#     configuration:
-#       interval: "*/2 14 3 9 *"
+      path: deepikasl/VT2
+      gitProvider: deepikaGithub
 
 pipelines:
   - name: pipeline_demo
@@ -22,7 +13,6 @@ pipelines:
         configuration:
           inputResources:
             - name: github_demo
-#             - name: myCronTrigger
         execution:
           onExecute:
             - echo "executing bash step..."
