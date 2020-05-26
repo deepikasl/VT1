@@ -15,6 +15,6 @@ pipelines:
             - name: github_demo
         execution:
           onExecute:
-            - echo "executing bash step..."
+            - echo "executing bash step bash_demo..."
             - sleep 30
   
