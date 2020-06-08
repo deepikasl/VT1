@@ -18,6 +18,7 @@ pipelines:
         configuration:
           inputResources:
             - name: github_demo
+            - name: github_test
         execution:
           onExecute:
             - echo "executing bash step bash_demo..."
