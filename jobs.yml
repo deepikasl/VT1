@@ -4,6 +4,11 @@ resources:
     configuration:
       path: deepikasl/VT2
       gitProvider: deepikaGithub
+  - name: github_test
+    type: GitRepo
+    configuration:
+      path: deepikasl/VT2
+      gitProvider: test123
 
 pipelines:
   - name: pipeline_demo
