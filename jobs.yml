@@ -14,6 +14,7 @@ resources:
       buildNumber: 1
       externalCI: jenkins
       
+      
 pipelines:
   - name: pipeline
     steps:          
