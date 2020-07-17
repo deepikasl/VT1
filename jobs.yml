@@ -22,5 +22,15 @@ pipelines:
         execution:
           onExecute:
             - echo "executing bash step bash_demo..."
-            - sleep 30
+      - name: bash_demo_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: github_demo
+          inputSteps:
+            - name: bash_demo
+        execution:
+          onExecute:
+            - echo "executing bash step bash_demo_1..."
+      
   
