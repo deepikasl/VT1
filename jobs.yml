@@ -21,16 +21,16 @@ pipelines:
         execution:
           onExecute:
             - echo "executing bash step bash_demo..."
-#       - name: bash_demo_1
-#         type: Bash
-#         configuration:
-#           inputResources:
-#             - name: github_demo
-#           inputSteps:
-#             - name: bash_demo
-#         execution:
-#           onExecute:
-#             - echo "executing bash step bash_demo_1..."
+      - name: bash_demo_3
+        type: Bash
+        configuration:
+          inputResources:
+            - name: github_demo
+          inputSteps:
+            - name: bash_demo
+        execution:
+          onExecute:
+            - echo "executing bash step bash_demo_1..."
 #       - name: bash_demo_2
 #         type: Bash
 #         configuration:
