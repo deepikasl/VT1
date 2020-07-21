@@ -21,6 +21,7 @@ pipelines:
         execution:
           onExecute:
             - echo "executing bash step bash_demo..."
+            - printenv
       - name: bash_demo_8
         type: Bash
         configuration:
