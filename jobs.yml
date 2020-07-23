@@ -4,13 +4,13 @@ resources:
     configuration:
       path: deepikasl/VT2
       gitProvider: deepikaGithub
-  - name: github_bbs
-    type: GitRepo
-    configuration:
-      path: ~DEEPIKAB/vt1
-      gitProvider: deepikaBBS
-      branches:
-        include: master
+#   - name: github_bbs
+#     type: GitRepo
+#     configuration:
+#       path: ~DEEPIKAB/vt1
+#       gitProvider: deepikaBBS
+#       branches:
+#         include: master
 #   - name: github_test
 #     type: GitRepo
 #     configuration:
@@ -25,7 +25,7 @@ pipelines:
         configuration:
           inputResources:
             - name: github_demo
-            - name: github_bbs
+#             - name: github_bbs
         execution:
           onExecute:
             - echo "executing bash step bash_demo..."
