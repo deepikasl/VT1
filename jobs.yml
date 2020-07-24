@@ -35,7 +35,7 @@ pipelines:
             - mkdir inDir
             - cd inDir && echo "state=$run_number" > run_state.txt
             - cd ../../
-            - add_run_files "runDir/*/run_state" run_state_file
+            - add_run_files "runDir/"*"/run_state" run_state_file
       - name: bash_demo_8
         type: Bash
         configuration:
