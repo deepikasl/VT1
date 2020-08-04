@@ -46,7 +46,7 @@ pipelines:
           inputSteps:
             - name: bash_demo
           outputResources:
-            - name: cluster
+            - name: propertyBag
         execution:
           onExecute:
             - echo "executing bash step bash_demo_1..."
@@ -57,7 +57,7 @@ pipelines:
         configuration:
           inputResources:
             - name: github_demo
-            - name: cluster
+            - name: propertyBag
         execution:
           onExecute:
             - echo "executing bash step bash_demo_2..."
