@@ -4,6 +4,10 @@ resources:
     configuration:
       path: deepikasl/VT2
       gitProvider: deepikaGithub
+  - name: cron
+    type: CronTrigger
+    configuration:
+      interval: '0 22 * * *'
 #   - name: github_bbs
 #     type: GitRepo
 #     configuration:
