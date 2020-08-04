@@ -34,7 +34,6 @@ pipelines:
         configuration:
           inputResources:
             - name: github_demo
-            - name: cluster
 #             - name: github_bbs
         execution:
           onExecute:
