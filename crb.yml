@@ -17,6 +17,7 @@ resources:
       sourceArtifactory: art
       query: ""
 pipelines:
+
   - name: test_pipe
     steps:
       - name: bundle_go_publish
