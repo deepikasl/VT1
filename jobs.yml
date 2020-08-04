@@ -4,10 +4,13 @@ resources:
     configuration:
       path: deepikasl/VT2
       gitProvider: deepikaGithub
-  - name: cron
-    type: CronTrigger
+  - name: cluster
+    type: VmCluster
     configuration:
-      interval: '*/2 * * * *'
+      sshKey: sshKey
+      targets:
+        - 1.1.1.1
+        - 2.2.2.2
 #   - name: github_bbs
 #     type: GitRepo
 #     configuration:
@@ -29,7 +32,7 @@ pipelines:
         configuration:
           inputResources:
             - name: github_demo
-            - name: cron
+            - name: cluster
 #             - name: github_bbs
         execution:
           onExecute:
