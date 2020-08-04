@@ -16,6 +16,7 @@ resources:
     configuration:
       sourceArtifactory: art
       query: ""
+      
 pipelines:
   - name: test_pipe
     steps:
