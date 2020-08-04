@@ -50,6 +50,8 @@ pipelines:
             - name: github_demo
           inputSteps:
             - name: bash_demo
+          outputResources:
+            - name: cluster
         execution:
           onExecute:
             - echo "executing bash step bash_demo_1..."
@@ -58,6 +60,7 @@ pipelines:
         configuration:
           inputResources:
             - name: github_demo
+            - name: cluster
           inputSteps:
             - name: bash_demo_8
         execution:
