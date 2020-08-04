@@ -4,15 +4,11 @@ resources:
     configuration:
       path: deepikasl/VT2
       gitProvider: deepikaGithub
-  - name: cluster
-    type: VmCluster
+  - name: propertyBag
+    type: PropertyBag
     configuration:
-      sshKey: sshKey
-      targets:
-        - 1.1.1.1
-        - 2.2.2.2
-        - 3.3.3.3
-        - 4.4.4.4
+      foo: bar
+      foo1: bar1
 #   - name: github_bbs
 #     type: GitRepo
 #     configuration:
