@@ -29,6 +29,7 @@ pipelines:
         configuration:
           inputResources:
             - name: github_demo
+            - name: cron
 #             - name: github_bbs
         execution:
           onExecute:
