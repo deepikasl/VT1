@@ -34,6 +34,12 @@ resources:
     type: IncomingWebhook
     configuration:
       webhookName: testin
+  - name: image
+    type: Image
+    configuration:
+      registry: dockerRegistry
+      imageName: ngnix
+      imageTag: latest
 #   - name: github_bbs
 #     type: GitRepo
 #     configuration:
@@ -90,6 +96,7 @@ pipelines:
             - name: cluster1
             - name: helm
             - name: incomingWebhook
+            - name: image
         execution:
           onExecute:
             - echo "executing bash step bash_demo_2..."
