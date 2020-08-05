@@ -23,7 +23,13 @@ resources:
         - 1.1.1.1
         - 2.2.2.2
         - 3.3.3.3
-        
+  - name: helm
+    type: HelmChart
+    configuration:
+      sourceArtifactory: art
+      repository: helm-local
+      chart: "test"
+      version: "1.0.0"
 #   - name: github_bbs
 #     type: GitRepo
 #     configuration:
@@ -64,6 +70,7 @@ pipelines:
           outputResources:
             - name: propertyBag
             - name: cluster1
+            - name: helm
         execution:
           onExecute:
             - echo "executing bash step bash_demo_1..."
@@ -76,6 +83,7 @@ pipelines:
             - name: github_demo
             - name: propertyBag
             - name: cluster1
+            - name: helm
         execution:
           onExecute:
             - echo "executing bash step bash_demo_2..."
