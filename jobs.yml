@@ -102,7 +102,7 @@ pipelines:
             - name: helm
             - name: incomingWebhook
             - name: image
-            - name: cron1
+#             - name: cron1
         execution:
           onExecute:
             - echo "executing bash step bash_demo_2..."
