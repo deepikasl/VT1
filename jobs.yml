@@ -15,7 +15,6 @@ resources:
       foo: bar
       foo1: bar1
       foo2: bar2
-      
 #   - name: github_bbs
 #     type: GitRepo
 #     configuration:
