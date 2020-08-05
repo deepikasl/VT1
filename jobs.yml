@@ -33,7 +33,7 @@ resources:
   - name: incomingWebhook
     type: IncomingWebhook
     configuration:
-      webhookName: test
+      webhookName: testin
 #   - name: github_bbs
 #     type: GitRepo
 #     configuration:
