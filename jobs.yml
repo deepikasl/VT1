@@ -97,11 +97,11 @@ pipelines:
         configuration:
           inputResources:
             - name: github_demo
-            - name: propertyBag
-            - name: cluster1
-            - name: helm
-            - name: incomingWebhook
-            - name: image
+#             - name: propertyBag
+#             - name: cluster1
+#             - name: helm
+#             - name: incomingWebhook
+#             - name: image
 #             - name: cron1
         execution:
           onExecute:
