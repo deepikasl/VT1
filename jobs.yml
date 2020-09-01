@@ -15,35 +15,35 @@ resources:
       foo: bar
       foo1: bar1
       foo2: bar2
-  - name: cluster1
-    type: VmCluster
-    configuration:
-      sshKey: sshKey
-      targets:
-        - 1.1.1.1
-        - 2.2.2.2
-        - 3.3.3.3
-  - name: helm
-    type: HelmChart
-    configuration:
-      sourceArtifactory: art
-      repository: helm-local
-      chart: "test"
-      version: "1.0.0"
-  - name: incomingWebhook
-    type: IncomingWebhook
-    configuration:
-      webhookName: testin
-  - name: image
-    type: Image
-    configuration:
-      registry: dockerRegistry
-      imageName: ngnix
-      imageTag: latest
-  - name: cron1
-    type: CronTrigger
-    configuration:
-      interval: '*/2 * * *'
+#   - name: cluster1
+#     type: VmCluster
+#     configuration:
+#       sshKey: sshKey
+#       targets:
+#         - 1.1.1.1
+#         - 2.2.2.2
+#         - 3.3.3.3
+#   - name: helm
+#     type: HelmChart
+#     configuration:
+#       sourceArtifactory: art
+#       repository: helm-local
+#       chart: "test"
+#       version: "1.0.0"
+#   - name: incomingWebhook
+#     type: IncomingWebhook
+#     configuration:
+#       webhookName: testin
+#   - name: image
+#     type: Image
+#     configuration:
+#       registry: dockerRegistry
+#       imageName: ngnix
+#       imageTag: latest
+#   - name: cron1
+#     type: CronTrigger
+#     configuration:
+#       interval: '*/2 * * *'
 
 #   - name: github_bbs
 #     type: GitRepo
@@ -84,9 +84,9 @@ pipelines:
             - name: bash_demo
           outputResources:
             - name: propertyBag
-            - name: cluster1
-            - name: helm
-            - name: incomingWebhook
+#             - name: cluster1
+#             - name: helm
+#             - name: incomingWebhook
         execution:
           onExecute:
             - echo "executing bash step bash_demo_1..."
