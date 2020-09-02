@@ -77,7 +77,7 @@ pipelines:
             - mkdir runDir && cd runDir && mkdir inDir && cd inDir && mkdir deepDir && cd deepDir && echo "state=$run_number" > run_state.txt && cd ../../../
             - echo ${run_number}
             - add_run_files runDir/*/deepDir run_state_dir
-            - write_output propertyBag "foo=$run_id"
+            - write_output propertyBag "foo=bash_demo"
       - name: bash_demo_8
         type: Bash
         configuration:
@@ -93,7 +93,7 @@ pipelines:
         execution:
           onExecute:
             - echo "executing bash step bash_demo_1..."
-            - write_output propertyBag "foo=$run_id"
+            - write_output propertyBag "foo=bash_demo_8"
       - name: bash_demo_test
         type: Bash
         configuration:
