@@ -92,6 +92,14 @@ pipelines:
         execution:
           onExecute:
             - echo "executing bash step bash_demo_1..."
+      - name: bash_demo_test
+        type: Bash
+        configuration:
+          inputResources:
+            - name: propertyBag
+        execution:
+          onExecute:
+            - echo "executing bash step bash_demo_test..."
   - name: pipeline_2
     steps:
       - name: bash_demo_9
