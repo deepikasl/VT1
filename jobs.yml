@@ -67,6 +67,8 @@ pipelines:
           inputResources:
             - name: github_demo
             - name: github_new
+          integrations:
+            - entArt
           outputResources:
             - name: propertyBag
 #             - name: github_bbs
