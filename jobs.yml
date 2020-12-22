@@ -62,7 +62,7 @@ pipelines:
   - name: pipeline_demo
     steps:          
       - name: bash_demo
-        type: Bash
+        type: Basha
         configuration:
           inputResources:
             - name: github_demo
