@@ -64,7 +64,7 @@ pipelines:
       - name: bash_demo
         type: Bash
         configuration:
-          nodePool: aws_pipelines_keys
+          nodePool: deepikaAwsNP
           inputResources:
             - name: github_demo
             - name: github_new
